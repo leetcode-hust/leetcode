@@ -6,7 +6,9 @@ package leetcode;
  *
  *
  */
-public class Question419_notFished {
+public class Question292 {
+
+    
 
     public static void main(String[] args) {
 

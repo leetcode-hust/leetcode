@@ -20,7 +20,7 @@ public class InputUtil {
     }
 
 
-    public static String inputString(String note, String str){
+    public static String inputString(String note){
         if(note==null){
             System.out.println("请输入字符串:");
         }else{
