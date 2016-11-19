@@ -1,9 +1,6 @@
 # Build and Release Folders
-out/*
-*.class
-
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+louyuting/out/*
+louyuting/.idea/*
+louyuting/lib/*
+louyuting/thread.iml
+louyuting/src/.DS_Store

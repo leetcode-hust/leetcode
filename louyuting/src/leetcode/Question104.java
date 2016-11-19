@@ -1,6 +1,7 @@
 package leetcode;
 
 import leetcode.common.TreeNode;
+import utils.LogUtil;
 
 /**
  * Created by louyuting on 16/11/20.
@@ -17,22 +18,28 @@ public class Question104 {
      * @param root
      * @return
      */
-    public int maxDepth(TreeNode root) {
+    public static int maxDepth(TreeNode root) {
         if(root == null){
             return 0;
         }
 
-        if(root.getLeft() == null && root.getRight()!= null){
-            return maxDepth(root.getRight());
-        } else if(root.getLeft() != null && root.getRight()== null){
-            return maxDepth(root.getLeft());
-        }else if(root.getLeft() == null && root.getRight()== null){
-            return maxDepth(root);
+        if(maxDepth(root.getLeft()) > maxDepth(root.getRight())){
+            return maxDepth(root.getLeft()) +1;
+        }else{
+            return maxDepth(root.getRight())+1;
         }
 
     }
 
     public static void main(String[] args) {
+        TreeNode root = new TreeNode(0);
+        root.setLeft(new TreeNode(1));
+        root.setRight(new TreeNode(2));
+
+        TreeNode left1 = root.getLeft();
+        left1.setLeft(new TreeNode(3));
+
+        LogUtil.log_debug(""+maxDepth(root));
 
     }
 }
