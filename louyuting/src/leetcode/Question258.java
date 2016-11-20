@@ -18,6 +18,12 @@ import utils.LogUtil;
  */
 public class Question258 {
 
+    /**
+     * 这个是最普通的算法,不停循环求出每位的和.
+     * @By 娄宇庭
+     * @param num
+     * @return
+     */
     public static int addDigits(int num) {
         if(num<10)
             return num;
@@ -36,9 +42,36 @@ public class Question258 {
         return result;
     }
 
-    public static void main(String[] args) {
-        LogUtil.log_debug(""+addDigits(38));
+
+    /**
+     * 参考网上别人的思路:  https://discuss.leetcode.com/topic/21588/1-line-java-solution
+     * 大天朝算法真是厉害了..
+     *  1行解决..
+     *  思路:
+     *      example: 比如438
+     *      438  ==  40*10 + 3*10 +8
+     *      4+3+8 == 4*(10%9)*(10%9) + 3*(10%9) + 8%9=15
+     *
+     *      15 == 1*10 +5
+     *      1+5 == 1*(10%9)+5%9 =6
+     *
+     *      规律: ab%9%9%9 == ab%9;
+     * @param num
+     * @return
+     */
+    public static int addDigits_reference(int num) {
+        return num==0?0:(num%9==0?9: num%9);
     }
+
+
+
+    public static void main(String[] args) {
+        LogUtil.log_debug(""+addDigits_reference(38));
+    }
+
+
+
+
 
     @Test
     public void test(){
