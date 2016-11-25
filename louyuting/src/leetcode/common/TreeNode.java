@@ -9,7 +9,6 @@ public class TreeNode {
     private int val;
     private TreeNode left;
     private TreeNode right;
-
     public TreeNode(int x) { val = x; }
 
     public int getVal() {
