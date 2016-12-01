@@ -14,7 +14,7 @@ public class GetChannel {
     private static final int BSIZE=1024;
 
     public static void main(String[] args) throws Exception{
-        //写一个文件:通过FileOutputStream来获取通道
+        //写一个文件,通过FileOutputStream来获取通道
         FileChannel fc = new FileOutputStream("data.txt").getChannel();
         fc.write(ByteBuffer.wrap("some text!".getBytes()));
         fc.close();
