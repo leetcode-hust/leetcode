@@ -16,11 +16,10 @@ public class FileChannelDemo {
 
     public static void main(String[] args) {
         try {
-            RandomAccessFile accessFile = new RandomAccessFile("data.txt", "rw");
+            RandomAccessFile accessFile = new RandomAccessFile("dataStructure.txt", "rw");
             FileChannel inchannel = accessFile.getChannel();//获取 FileChannel
 
             ByteBuffer buffer = ByteBuffer.allocate(48);//申请48字节的缓冲区
-
             int bytesRead = inchannel.read(buffer);// 读取数据放入缓冲区
 
             while(bytesRead != -1){

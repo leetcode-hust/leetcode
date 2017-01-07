@@ -6,7 +6,7 @@ import java.util.concurrent.*;
 /**
  * BoundedHashSet
  * <p/>
- * Using Semaphore to bound a collection
+ * Using Semaphore to bound a test
  *
  * @author Brian Goetz and Tim Peierls
  */

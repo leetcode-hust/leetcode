@@ -29,7 +29,7 @@ class Entrance implements Runnable {
   public Entrance(int id) {
     this.id = id;
     // Keep this task in a list. Also prevents
-    // garbage collection of dead tasks:
+    // garbage test of dead tasks:
     entrances.add(this);
   }
   public void run() {
@@ -66,7 +66,7 @@ public class OrnamentalGarden {
     ExecutorService exec = Executors.newCachedThreadPool();
     for(int i = 0; i < 5; i++)
       exec.execute(new Entrance(i));
-    // Run for a while, then stop and collect the data:
+    // Run for a while, then stop and collect the dataStructure:
     TimeUnit.SECONDS.sleep(5);
     Entrance.cancel();
     exec.shutdown();

@@ -63,7 +63,7 @@ public class ImageBase64Util {
     }
     
     /**
-     * 将图片经过base64压缩之后的字符串解压成图片(这里的base64字符串包是通过web端上传的，包含前面的图片类型信息，比如:data:image/jpeg;base64,)
+     * 将图片经过base64压缩之后的字符串解压成图片(这里的base64字符串包是通过web端上传的，包含前面的图片类型信息，比如:dataStructure:image/jpeg;base64,)
      * @param base64 base64编码之后的字符串
      * @param path 图片的保存路径(目录)
      * @param imgName 图片的保存名字,这里的名字不加文件扩展名
@@ -71,19 +71,19 @@ public class ImageBase64Util {
      */
 	public static String decodeBase64ToImage(String base64, String path, String imgName) {
 		//先判断图片包含图片的头信息不？
-	    if(base64.startsWith("data:image/jpeg")) {
+	    if(base64.startsWith("dataStructure:image/jpeg")) {
 	        imgName = imgName+".jpeg";
-	    }else if(base64.startsWith("data:image/jpg")){
+	    }else if(base64.startsWith("dataStructure:image/jpg")){
 	        imgName = imgName+".jpg";
-	    }else if(base64.startsWith("data:image/png")){
+	    }else if(base64.startsWith("dataStructure:image/png")){
 	        imgName = imgName+".png";
-	    }else if(base64.startsWith("data:image/gif")) {
+	    }else if(base64.startsWith("dataStructure:image/gif")) {
 	        imgName = imgName+".gif";
-	    }else if(base64.startsWith("data:image/jpe")) {
+	    }else if(base64.startsWith("dataStructure:image/jpe")) {
 	        imgName = imgName+".jpe";
-	    }else if(base64.startsWith("data:image/bmp")) {
+	    }else if(base64.startsWith("dataStructure:image/bmp")) {
 	        imgName = imgName+".bmp";
-	    }else if(base64.startsWith("data:image/pcx")) {
+	    }else if(base64.startsWith("dataStructure:image/pcx")) {
 	        imgName = imgName+".pcx";
 	    }else{
 	    	//其余的默认你保存为jpg

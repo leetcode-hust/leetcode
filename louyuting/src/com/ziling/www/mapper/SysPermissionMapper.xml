@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziling.www.mapper.SysPermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.ziling.www.po.SysPermission" >
+    <id column="permission_id" property="permissionId" jdbcType="VARCHAR" />
+    <result column="res_name" property="resName" jdbcType="VARCHAR" />
+    <result column="res_type" property="resType" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="per_code" property="perCode" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+    <result column="parent_ids" property="parentIds" jdbcType="VARCHAR" />
+    <result column="sort_string" property="sortString" jdbcType="VARCHAR" />
+    <result column="per_status" property="perStatus" jdbcType="INTEGER" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    permission_id, res_name, res_type, url, per_code, parent_id, parent_ids, sort_string, 
+    per_status, created_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ziling.www.po.SysPermissionExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sys_permission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_permission
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from sys_permission
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ziling.www.po.SysPermissionExample" >
+    delete from sys_permission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ziling.www.po.SysPermission" >
+    insert into sys_permission (permission_id, res_name, res_type, 
+      url, per_code, parent_id, 
+      parent_ids, sort_string, per_status, 
+      created_time)
+    values (#{permissionId,jdbcType=VARCHAR}, #{resName,jdbcType=VARCHAR}, #{resType,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{perCode,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, 
+      #{parentIds,jdbcType=VARCHAR}, #{sortString,jdbcType=VARCHAR}, #{perStatus,jdbcType=INTEGER}, 
+      #{createdTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ziling.www.po.SysPermission" >
+    insert into sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="permissionId != null" >
+        permission_id,
+      </if>
+      <if test="resName != null" >
+        res_name,
+      </if>
+      <if test="resType != null" >
+        res_type,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="perCode != null" >
+        per_code,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="parentIds != null" >
+        parent_ids,
+      </if>
+      <if test="sortString != null" >
+        sort_string,
+      </if>
+      <if test="perStatus != null" >
+        per_status,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="permissionId != null" >
+        #{permissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="resName != null" >
+        #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resType != null" >
+        #{resType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="perCode != null" >
+        #{perCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIds != null" >
+        #{parentIds,jdbcType=VARCHAR},
+      </if>
+      <if test="sortString != null" >
+        #{sortString,jdbcType=VARCHAR},
+      </if>
+      <if test="perStatus != null" >
+        #{perStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ziling.www.po.SysPermissionExample" resultType="java.lang.Integer" >
+    select count(*) from sys_permission
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sys_permission
+    <set >
+      <if test="record.permissionId != null" >
+        permission_id = #{record.permissionId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resName != null" >
+        res_name = #{record.resName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resType != null" >
+        res_type = #{record.resType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.perCode != null" >
+        per_code = #{record.perCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentId != null" >
+        parent_id = #{record.parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentIds != null" >
+        parent_ids = #{record.parentIds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sortString != null" >
+        sort_string = #{record.sortString,jdbcType=VARCHAR},
+      </if>
+      <if test="record.perStatus != null" >
+        per_status = #{record.perStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdTime != null" >
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sys_permission
+    set permission_id = #{record.permissionId,jdbcType=VARCHAR},
+      res_name = #{record.resName,jdbcType=VARCHAR},
+      res_type = #{record.resType,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      per_code = #{record.perCode,jdbcType=VARCHAR},
+      parent_id = #{record.parentId,jdbcType=VARCHAR},
+      parent_ids = #{record.parentIds,jdbcType=VARCHAR},
+      sort_string = #{record.sortString,jdbcType=VARCHAR},
+      per_status = #{record.perStatus,jdbcType=INTEGER},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziling.www.po.SysPermission" >
+    update sys_permission
+    <set >
+      <if test="resName != null" >
+        res_name = #{resName,jdbcType=VARCHAR},
+      </if>
+      <if test="resType != null" >
+        res_type = #{resType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="perCode != null" >
+        per_code = #{perCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIds != null" >
+        parent_ids = #{parentIds,jdbcType=VARCHAR},
+      </if>
+      <if test="sortString != null" >
+        sort_string = #{sortString,jdbcType=VARCHAR},
+      </if>
+      <if test="perStatus != null" >
+        per_status = #{perStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ziling.www.po.SysPermission" >
+    update sys_permission
+    set res_name = #{resName,jdbcType=VARCHAR},
+      res_type = #{resType,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      per_code = #{perCode,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      parent_ids = #{parentIds,jdbcType=VARCHAR},
+      sort_string = #{sortString,jdbcType=VARCHAR},
+      per_status = #{perStatus,jdbcType=INTEGER},
+      created_time = #{createdTime,jdbcType=TIMESTAMP}
+    where permission_id = #{permissionId,jdbcType=VARCHAR}
+  </update>
+</mapper>

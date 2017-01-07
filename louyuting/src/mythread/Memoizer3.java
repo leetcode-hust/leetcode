@@ -12,8 +12,8 @@ import java.util.concurrent.*;
  */
 public class Memoizer3<A, V> implements Computable<A, V> {
 
-    private final Map<A,Future<V> > cache = new ConcurrentHashMap<A,Future<V>>();
-    private final Computable<A,V> c;
+    private Map<A,Future<V> > cache = new ConcurrentHashMap<A,Future<V>>();
+    private Computable<A,V> c;
 
     public Memoizer3(Computable<A, V> c) {
         this.c = c;
@@ -27,13 +27,14 @@ public class Memoizer3<A, V> implements Computable<A, V> {
             Callable<V> eval = new Callable<V>() {
                 @Override
                 public V call() throws Exception {
-                    return c.compute(arg);
+                    //return c.compute(arg);
+                    return null;
                 }
             };
             //创建一个FutureTask，
             FutureTask<V> ft = new FutureTask<V>(eval);
             future = ft;
-            cache.putIfAbsent(arg, ft);
+           // cache.putIfAbsent(arg, ft);
             ft.run();
         }
         try {

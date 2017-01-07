@@ -30,12 +30,12 @@ public class ChannelCopy {
         }
 
         //写一个文件:通过FileOutputStream来获取通道
-        FileChannel fc = new FileOutputStream("data.txt").getChannel();
+        FileChannel fc = new FileOutputStream("dataStructure.txt").getChannel();
         fc.write(ByteBuffer.wrap("some text!".getBytes()));
         fc.close();
 
         //在文件末尾添加
-        fc = new RandomAccessFile("data.txt", "rw").getChannel();
+        fc = new RandomAccessFile("dataStructure.txt", "rw").getChannel();
         fc.position(fc.size());//把指针移动到文件末尾
         fc.write(ByteBuffer.wrap("somethig more".getBytes()));
         fc.close();

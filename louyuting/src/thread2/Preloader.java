@@ -5,7 +5,7 @@ import java.util.concurrent.*;
 /**
  * Preloader
  *
- * Using FutureTask to preload data that is needed later
+ * Using FutureTask to preload dataStructure that is needed later
  *
  * @author Brian Goetz and Tim Peierls
  */

@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziling.www.mapper.UserBillMapper" >
+  <resultMap id="BaseResultMap" type="com.ziling.www.po.UserBill" >
+    <id column="bill_id" property="billId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="bill_type" property="billType" jdbcType="INTEGER" />
+    <result column="is_success" property="isSuccess" jdbcType="VARCHAR" />
+    <result column="sign_type" property="signType" jdbcType="VARCHAR" />
+    <result column="sign" property="sign" jdbcType="VARCHAR" />
+    <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="payment_type" property="paymentType" jdbcType="VARCHAR" />
+    <result column="exterface" property="exterface" jdbcType="VARCHAR" />
+    <result column="trade_no" property="tradeNo" jdbcType="VARCHAR" />
+    <result column="trade_status" property="tradeStatus" jdbcType="VARCHAR" />
+    <result column="notify_id" property="notifyId" jdbcType="VARCHAR" />
+    <result column="notify_time" property="notifyTime" jdbcType="TIMESTAMP" />
+    <result column="notify_type" property="notifyType" jdbcType="VARCHAR" />
+    <result column="seller_email" property="sellerEmail" jdbcType="VARCHAR" />
+    <result column="buyer_email" property="buyerEmail" jdbcType="VARCHAR" />
+    <result column="seller_id" property="sellerId" jdbcType="VARCHAR" />
+    <result column="buyer_id" property="buyerId" jdbcType="VARCHAR" />
+    <result column="total_fee" property="totalFee" jdbcType="REAL" />
+    <result column="body" property="body" jdbcType="VARCHAR" />
+    <result column="extra_common_param" property="extraCommonParam" jdbcType="VARCHAR" />
+    <result column="bill_status" property="billStatus" jdbcType="INTEGER" />
+    <result column="bak_1" property="bak1" jdbcType="VARCHAR" />
+    <result column="bak_2" property="bak2" jdbcType="VARCHAR" />
+    <result column="bak_3" property="bak3" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bill_id, user_id, bill_type, is_success, sign_type, sign, out_trade_no, subject, 
+    payment_type, exterface, trade_no, trade_status, notify_id, notify_time, notify_type, 
+    seller_email, buyer_email, seller_id, buyer_id, total_fee, body, extra_common_param, 
+    bill_status, bak_1, bak_2, bak_3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ziling.www.po.UserBillExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_bill
+    where bill_id = #{billId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_bill
+    where bill_id = #{billId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ziling.www.po.UserBillExample" >
+    delete from user_bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ziling.www.po.UserBill" >
+    insert into user_bill (bill_id, user_id, bill_type, 
+      is_success, sign_type, sign, 
+      out_trade_no, subject, payment_type, 
+      exterface, trade_no, trade_status, 
+      notify_id, notify_time, notify_type, 
+      seller_email, buyer_email, seller_id, 
+      buyer_id, total_fee, body, 
+      extra_common_param, bill_status, bak_1, 
+      bak_2, bak_3)
+    values (#{billId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{billType,jdbcType=INTEGER}, 
+      #{isSuccess,jdbcType=VARCHAR}, #{signType,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, 
+      #{outTradeNo,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{paymentType,jdbcType=VARCHAR}, 
+      #{exterface,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, #{tradeStatus,jdbcType=VARCHAR}, 
+      #{notifyId,jdbcType=VARCHAR}, #{notifyTime,jdbcType=TIMESTAMP}, #{notifyType,jdbcType=VARCHAR}, 
+      #{sellerEmail,jdbcType=VARCHAR}, #{buyerEmail,jdbcType=VARCHAR}, #{sellerId,jdbcType=VARCHAR}, 
+      #{buyerId,jdbcType=VARCHAR}, #{totalFee,jdbcType=REAL}, #{body,jdbcType=VARCHAR}, 
+      #{extraCommonParam,jdbcType=VARCHAR}, #{billStatus,jdbcType=INTEGER}, #{bak1,jdbcType=VARCHAR}, 
+      #{bak2,jdbcType=VARCHAR}, #{bak3,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ziling.www.po.UserBill" >
+    insert into user_bill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        bill_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="billType != null" >
+        bill_type,
+      </if>
+      <if test="isSuccess != null" >
+        is_success,
+      </if>
+      <if test="signType != null" >
+        sign_type,
+      </if>
+      <if test="sign != null" >
+        sign,
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="paymentType != null" >
+        payment_type,
+      </if>
+      <if test="exterface != null" >
+        exterface,
+      </if>
+      <if test="tradeNo != null" >
+        trade_no,
+      </if>
+      <if test="tradeStatus != null" >
+        trade_status,
+      </if>
+      <if test="notifyId != null" >
+        notify_id,
+      </if>
+      <if test="notifyTime != null" >
+        notify_time,
+      </if>
+      <if test="notifyType != null" >
+        notify_type,
+      </if>
+      <if test="sellerEmail != null" >
+        seller_email,
+      </if>
+      <if test="buyerEmail != null" >
+        buyer_email,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="totalFee != null" >
+        total_fee,
+      </if>
+      <if test="body != null" >
+        body,
+      </if>
+      <if test="extraCommonParam != null" >
+        extra_common_param,
+      </if>
+      <if test="billStatus != null" >
+        bill_status,
+      </if>
+      <if test="bak1 != null" >
+        bak_1,
+      </if>
+      <if test="bak2 != null" >
+        bak_2,
+      </if>
+      <if test="bak3 != null" >
+        bak_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        #{billId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null" >
+        #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        #{isSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null" >
+        #{signType,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="exterface != null" >
+        #{exterface,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null" >
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null" >
+        #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyId != null" >
+        #{notifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyTime != null" >
+        #{notifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notifyType != null" >
+        #{notifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerEmail != null" >
+        #{sellerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerEmail != null" >
+        #{buyerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        #{totalFee,jdbcType=REAL},
+      </if>
+      <if test="body != null" >
+        #{body,jdbcType=VARCHAR},
+      </if>
+      <if test="extraCommonParam != null" >
+        #{extraCommonParam,jdbcType=VARCHAR},
+      </if>
+      <if test="billStatus != null" >
+        #{billStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bak1 != null" >
+        #{bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        #{bak3,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ziling.www.po.UserBillExample" resultType="java.lang.Integer" >
+    select count(*) from user_bill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_bill
+    <set >
+      <if test="record.billId != null" >
+        bill_id = #{record.billId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billType != null" >
+        bill_type = #{record.billType,jdbcType=INTEGER},
+      </if>
+      <if test="record.isSuccess != null" >
+        is_success = #{record.isSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signType != null" >
+        sign_type = #{record.signType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sign != null" >
+        sign = #{record.sign,jdbcType=VARCHAR},
+      </if>
+      <if test="record.outTradeNo != null" >
+        out_trade_no = #{record.outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.subject != null" >
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paymentType != null" >
+        payment_type = #{record.paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exterface != null" >
+        exterface = #{record.exterface,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeNo != null" >
+        trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tradeStatus != null" >
+        trade_status = #{record.tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notifyId != null" >
+        notify_id = #{record.notifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notifyTime != null" >
+        notify_time = #{record.notifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.notifyType != null" >
+        notify_type = #{record.notifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerEmail != null" >
+        seller_email = #{record.sellerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerEmail != null" >
+        buyer_email = #{record.buyerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerId != null" >
+        seller_id = #{record.sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.buyerId != null" >
+        buyer_id = #{record.buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.totalFee != null" >
+        total_fee = #{record.totalFee,jdbcType=REAL},
+      </if>
+      <if test="record.body != null" >
+        body = #{record.body,jdbcType=VARCHAR},
+      </if>
+      <if test="record.extraCommonParam != null" >
+        extra_common_param = #{record.extraCommonParam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billStatus != null" >
+        bill_status = #{record.billStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.bak1 != null" >
+        bak_1 = #{record.bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bak2 != null" >
+        bak_2 = #{record.bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bak3 != null" >
+        bak_3 = #{record.bak3,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_bill
+    set bill_id = #{record.billId,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      bill_type = #{record.billType,jdbcType=INTEGER},
+      is_success = #{record.isSuccess,jdbcType=VARCHAR},
+      sign_type = #{record.signType,jdbcType=VARCHAR},
+      sign = #{record.sign,jdbcType=VARCHAR},
+      out_trade_no = #{record.outTradeNo,jdbcType=VARCHAR},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      payment_type = #{record.paymentType,jdbcType=VARCHAR},
+      exterface = #{record.exterface,jdbcType=VARCHAR},
+      trade_no = #{record.tradeNo,jdbcType=VARCHAR},
+      trade_status = #{record.tradeStatus,jdbcType=VARCHAR},
+      notify_id = #{record.notifyId,jdbcType=VARCHAR},
+      notify_time = #{record.notifyTime,jdbcType=TIMESTAMP},
+      notify_type = #{record.notifyType,jdbcType=VARCHAR},
+      seller_email = #{record.sellerEmail,jdbcType=VARCHAR},
+      buyer_email = #{record.buyerEmail,jdbcType=VARCHAR},
+      seller_id = #{record.sellerId,jdbcType=VARCHAR},
+      buyer_id = #{record.buyerId,jdbcType=VARCHAR},
+      total_fee = #{record.totalFee,jdbcType=REAL},
+      body = #{record.body,jdbcType=VARCHAR},
+      extra_common_param = #{record.extraCommonParam,jdbcType=VARCHAR},
+      bill_status = #{record.billStatus,jdbcType=INTEGER},
+      bak_1 = #{record.bak1,jdbcType=VARCHAR},
+      bak_2 = #{record.bak2,jdbcType=VARCHAR},
+      bak_3 = #{record.bak3,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziling.www.po.UserBill" >
+    update user_bill
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="billType != null" >
+        bill_type = #{billType,jdbcType=INTEGER},
+      </if>
+      <if test="isSuccess != null" >
+        is_success = #{isSuccess,jdbcType=VARCHAR},
+      </if>
+      <if test="signType != null" >
+        sign_type = #{signType,jdbcType=VARCHAR},
+      </if>
+      <if test="sign != null" >
+        sign = #{sign,jdbcType=VARCHAR},
+      </if>
+      <if test="outTradeNo != null" >
+        out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentType != null" >
+        payment_type = #{paymentType,jdbcType=VARCHAR},
+      </if>
+      <if test="exterface != null" >
+        exterface = #{exterface,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeNo != null" >
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null" >
+        trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyId != null" >
+        notify_id = #{notifyId,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyTime != null" >
+        notify_time = #{notifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="notifyType != null" >
+        notify_type = #{notifyType,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerEmail != null" >
+        seller_email = #{sellerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerEmail != null" >
+        buyer_email = #{buyerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="totalFee != null" >
+        total_fee = #{totalFee,jdbcType=REAL},
+      </if>
+      <if test="body != null" >
+        body = #{body,jdbcType=VARCHAR},
+      </if>
+      <if test="extraCommonParam != null" >
+        extra_common_param = #{extraCommonParam,jdbcType=VARCHAR},
+      </if>
+      <if test="billStatus != null" >
+        bill_status = #{billStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bak1 != null" >
+        bak_1 = #{bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        bak_2 = #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        bak_3 = #{bak3,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bill_id = #{billId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ziling.www.po.UserBill" >
+    update user_bill
+    set user_id = #{userId,jdbcType=VARCHAR},
+      bill_type = #{billType,jdbcType=INTEGER},
+      is_success = #{isSuccess,jdbcType=VARCHAR},
+      sign_type = #{signType,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      payment_type = #{paymentType,jdbcType=VARCHAR},
+      exterface = #{exterface,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      notify_id = #{notifyId,jdbcType=VARCHAR},
+      notify_time = #{notifyTime,jdbcType=TIMESTAMP},
+      notify_type = #{notifyType,jdbcType=VARCHAR},
+      seller_email = #{sellerEmail,jdbcType=VARCHAR},
+      buyer_email = #{buyerEmail,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=REAL},
+      body = #{body,jdbcType=VARCHAR},
+      extra_common_param = #{extraCommonParam,jdbcType=VARCHAR},
+      bill_status = #{billStatus,jdbcType=INTEGER},
+      bak_1 = #{bak1,jdbcType=VARCHAR},
+      bak_2 = #{bak2,jdbcType=VARCHAR},
+      bak_3 = #{bak3,jdbcType=INTEGER}
+    where bill_id = #{billId,jdbcType=VARCHAR}
+  </update>
+</mapper>

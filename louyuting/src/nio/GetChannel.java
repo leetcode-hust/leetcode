@@ -15,18 +15,18 @@ public class GetChannel {
 
     public static void main(String[] args) throws Exception{
         //写一个文件,通过FileOutputStream来获取通道
-        FileChannel fc = new FileOutputStream("data.txt").getChannel();
+        FileChannel fc = new FileOutputStream("dataStructure.txt").getChannel();
         fc.write(ByteBuffer.wrap("some text!".getBytes()));
         fc.close();
 
         //在文件末尾添加
-        fc = new RandomAccessFile("data.txt", "rw").getChannel();
+        fc = new RandomAccessFile("dataStructure.txt", "rw").getChannel();
         fc.position(fc.size());//把指针移动到文件末尾
         fc.write(ByteBuffer.wrap("somethig more".getBytes()));
         fc.close();
 
         //读文件
-        fc = new FileInputStream("data.txt").getChannel();
+        fc = new FileInputStream("dataStructure.txt").getChannel();
         ByteBuffer buff = ByteBuffer.allocate(BSIZE);//创建一个缓冲区并指定大小
         fc.read(buff);//读取文本并放入缓冲区中
         buff.flip();//flip()函数有两个作用：
