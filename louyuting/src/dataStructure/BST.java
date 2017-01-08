@@ -1,8 +1,8 @@
 package dataStructure;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 /**
  * Created by louyuting on 17/1/7.
@@ -95,7 +95,8 @@ public class BST<Key extends Comparable<Key>, Value> {
      */
     private Node put(Node x, Key key, Value value){
         if( x==null ){
-            new Node(key, value, 1);
+            x = new Node(key, value, 1);
+            return x;
         }
         int cmp = key.compareTo(x.key);
         if(cmp<0){
@@ -226,7 +227,11 @@ public class BST<Key extends Comparable<Key>, Value> {
      * 排名为k的结点的key
      */
     public Key select(int k){
-        return select(root, k).key;
+        Node x = select(root, k);
+        if(x == null){
+            return null;
+        }
+        return x.key;
     }
     /**
      * 返回排名为k的结点
@@ -239,13 +244,16 @@ public class BST<Key extends Comparable<Key>, Value> {
             return null;
         }
         int t = size(x.left);//获取左子树的节点数
-        if(t>k){//排名k的结点在左子树
+
+        if(t == k) {//左子树节点数和k相同
+            return x.left ;
+        } else if( t+1 == k ){//左子树结点数比k小一.
+            return x;
+        } else if(t>k){//排名k的结点在左子树
             return select(x.left, k);
-        }else if(t<k){
+        }else{
             //排名k的在右子树
             return select(x.right, k-t-1);
-        } else{
-            return x;
         }
     }
 
@@ -271,9 +279,9 @@ public class BST<Key extends Comparable<Key>, Value> {
             return rank(x.left, key);
         } else if(cmp>0){
             //key大于root的key,所以key在右子树中
-            return 1+size(x.left)+rank(x.right, key);
+            return 1 + size(x.left) + rank(x.right, key);
         } else{
-            return size(x.left);
+            return size(x.left)+1;
         }
     }
 
@@ -314,7 +322,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         if(x.right == null){//右子树为空
             return x.left;//删除根节点,这时返回的是新的二叉查找树的根节点
         }
-        x.right = deleteMin(x.right);
+        x.right = deleteMax(x.right);
         x.N = size(x.left) + size(x.right) + 1;
         return x;
     }
@@ -349,47 +357,122 @@ public class BST<Key extends Comparable<Key>, Value> {
             if(x.right == null){
                 return x.left;
             }
-            //根节点有左右子树
+            /** 根节点有左右子树的情况 */
+            //1. 将指向即将被删除的结点的链接保存为t;
             Node t = x;
-            //1. 先求出x的右子树中最小键值的结点并让x指向它.
+            //2. 先求出x的右子树中最小键值的结点并让x指向它.
             x = min(t.right);
-            //2. 将t的右子树删除最小的结点之后的根节点返回
+            //3. 将t的右子树删除最小的结点之后的根节点返回
             x.right = deleteMin(t.right);
             //3. 将t的左子树给x的左子树
-            x.left = t.right;
+            x.left = t.left;
         }
         x.N = size(x.left) + size(x.right) + 1;
         return x;
     }
 
     /**
-     * 范围查找
+     * 范围查找,返回当前树中的所有的键值
      */
     public Iterator<Key> keys(){
         return keys(min(), max());
     }
-
+    /**
+     * 输入最小键值和最大键值,获取所有的键值
+     */
     public Iterator<Key> keys(Key lo, Key hi){
-        Queue<Key> queue = new Queue<Key>();
-        keys(root, queue, lo, hi);
-        return queue.iterator();
+        List<Key> list = new ArrayList<>();
+        keys(root, list, lo, hi);
+        return list.iterator();
     }
-
-    private void keys(Node x, Queue<Key> queue, Key lo, Key hi){
+    /**
+     *
+     */
+    private void keys(Node x, List<Key> list, Key lo, Key hi){
         if(x == null){
             return;
         }
         int cmplo = lo.compareTo(x.key);
         int cmphi = hi.compareTo(x.key);
         if(cmplo < 0){
-            keys(x.left, queue, lo, hi);
+            keys(x.left, list, lo, hi);
         }
         if(cmplo <=0 && cmphi>=0){
-            queue.enqueue(x.key);
+            list.add(x.key);
         }
         if(cmphi > 0){
-            keys(x.right, queue, lo, hi);
+            keys(x.right, list, lo, hi);
         }
     }
 
+
+    /**
+     * main 测试
+     * @param args
+     */
+    public static void main(String[] args) {
+        BST<Integer, String> bst =  new BST<Integer, String>();
+        bst.put(5, "5");
+        bst.put(1, "1");
+        bst.put(4, "4");
+        bst.put(7, "7");
+        bst.put(3, "3");
+        bst.put(8, "8");
+
+       // bst.test(bst);
+        bst.deleteMax();
+        System.out.println("/******************* 删除结点 *******************/");
+        ///bst.test(bst);
+
+        Iterator<Integer> iterator0 = bst.keys();
+        while (iterator0.hasNext()){
+            System.out.println(iterator0.next());
+        }
+        bst.delete(1);
+        System.out.println("删除1");
+
+        // bst.test(bst);
+
+        Iterator<Integer> iterator = bst.keys();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+    }
+
+
+    public void test(BST bst){
+        //测试get
+        System.out.println("/** 查找和插入测试 */");
+        System.out.println(bst.get(5));
+        System.out.println(bst.get(1));
+        System.out.println(bst.get(5));
+        System.out.println(bst.get(8));
+
+        System.out.println("/** size */");
+        System.out.println(bst.size());
+
+        System.out.println("/** 最小键值和最大键值 */");
+        System.out.println(bst.min());
+        System.out.println(bst.max());
+
+        System.out.println("/** 向上向下取整 */");
+        System.out.println(bst.floor(2));
+        System.out.println(bst.ceiling(6));
+
+        System.out.println("/** 排名为k的结点键值 */");
+        System.out.println(bst.select(1));
+
+        System.out.println("/** 获取结点的排名 */");
+        System.out.println(bst.rank(3));
+    }
+
 }
+
+
+
+
+
+
+
+
+
