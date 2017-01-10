@@ -26,6 +26,8 @@ public class GeneratorSqlmap {
 		myBatisGenerator.generate(null);
 
 	}
+
+
 	public static void main(String[] args) throws Exception {
 		try {
 			GeneratorSqlmap generatorSqlmap = new GeneratorSqlmap();

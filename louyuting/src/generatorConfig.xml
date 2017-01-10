@@ -50,7 +50,9 @@
 		<!-- 指定数据库表 -->
         <table tableName="sys_activity"></table>
         <table tableName="sys_business"></table>
+        <table tableName="sys_collection"></table>
         <table tableName="sys_log"></table>
+        <table tableName="sys_picture"></table>
         <table tableName="sys_user"></table>
 		<!--<table tableName="advertisement"></table>
         <table tableName="assistant_msg"></table>
