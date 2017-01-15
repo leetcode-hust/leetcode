@@ -25,17 +25,6 @@ class First{
     }
 }
 
-class Second{
-    static {
-        System.out.println("Loading Second");
-    }
-}
-
-class Third{
-    static {
-        System.out.println("Loading Third");
-    }
-}
 
 public class ClassTest {
 
@@ -53,9 +42,10 @@ public class ClassTest {
 
     @org.junit.Test
     public void test3() throws ClassNotFoundException {
-        Class first3 = new First().getClass();//加载类到JVM内存并把非静态域参数初始化.
+        Class<?> first3 = new First().getClass();//加载类到JVM内存并把非静态域参数初始化.
         System.out.println("first3:" + first3);
     }
+
 }
 
 
