@@ -1,7 +1,5 @@
 package test;
 
-import org.apache.log4j.Logger;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -66,13 +64,35 @@ public class Test {
                 : "date is not null"));
     }
 
-
+    @org.junit.Test
+    public void test0(){
+        System.out.println(Runtime.getRuntime().availableProcessors());
+    }
 
     @org.junit.Test
-    public void test111(){
-        Logger logger = Logger.getLogger(Test.class);
+    public void testClass() throws ClassNotFoundException {
+        System.out.println(Test.class.getName());
+        Class test = Class.forName("test.Test");
+        System.out.println(test.getName());
 
-        logger.debug("hehehe");
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
