@@ -7,6 +7,24 @@ import java.util.Date;
  * Created by louyuting on 16/11/11.
  * 序列化与反序列化
  */
+class Customer implements Serializable{
+    private String name;
+    private String age;
+
+    public Customer() {
+    }
+
+    public Customer(String age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "name=" + this.name + ", age="+this.age;
+    }
+}
+
 public class SerializableTest {
 
 
@@ -26,7 +44,6 @@ public class SerializableTest {
         System.out.println("obj2:"+ (Date)in.readObject());
         System.out.println("obj3:"+ (Customer)in.readObject());
         in.close();
-
     }
 
 }

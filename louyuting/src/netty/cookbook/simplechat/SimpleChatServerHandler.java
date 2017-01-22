@@ -72,7 +72,6 @@ public class SimpleChatServerHandler extends SimpleChannelInboundHandler<String>
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        //super.channelActive(ctx);
         Channel incoming = ctx.channel();
         System.out.println("SimpleChatClient:" + incoming.remoteAddress()+"在线");
     }
