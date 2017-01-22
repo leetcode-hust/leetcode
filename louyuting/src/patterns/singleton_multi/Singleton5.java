@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by louyuting on 17/1/22.
- * synchronized 同步代码块实现线程安全
+ * synchronized
  */
 public class Singleton5 {
     //单例

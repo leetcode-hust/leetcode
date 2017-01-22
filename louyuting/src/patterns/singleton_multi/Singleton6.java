@@ -6,10 +6,10 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by louyuting on 17/1/22.
- * synchronized 同步代码块实现线程安全
+ * synchronized DCl
  */
 public class Singleton6 {
-    //单例
+    //使用volatile关键字保其可见性
     volatile private static Singleton6 instance;
 
     private static Lock lock = new ReentrantLock();
@@ -24,7 +24,7 @@ public class Singleton6 {
         try {
             if(instance==null){
                 lock.lock();//加锁
-                if(instance == null){
+                if(instance == null){//二次检查
                     TimeUnit.MILLISECONDS.sleep(300);
                     instance = new Singleton6();
                 }
