@@ -18,9 +18,13 @@ public class SimpleChatClientInitializer extends ChannelInitializer<SocketChanne
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
+        //解码器inbound 入站解码
         pipeline.addLast("framer", new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+        //解码器 inbound 入站解码
         pipeline.addLast("decoder", new StringDecoder());
+        //编码器,outbound 出站编码
         pipeline.addLast("encoder", new StringEncoder());
+        //编码器 inbound 入站数据
         pipeline.addLast("handler", new SimpleChatClientHandler());
     }
 }

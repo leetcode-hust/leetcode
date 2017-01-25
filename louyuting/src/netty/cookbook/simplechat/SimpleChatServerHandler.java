@@ -6,6 +6,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import utils.LogUtil;
 
 /**
  * Created by louyuting on 16/12/8.
@@ -55,6 +56,7 @@ public class SimpleChatServerHandler extends SimpleChannelInboundHandler<String>
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        LogUtil.log_debug("[louyuting]--服务器接收到消息:" + msg);
         Channel incomming = ctx.channel();
         for(Channel channel:channels){
             if(channel != incomming) {
