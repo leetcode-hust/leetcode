@@ -1,4 +1,4 @@
-package netty;
+package netty.other;
 
 import utils.LogUtil;
 

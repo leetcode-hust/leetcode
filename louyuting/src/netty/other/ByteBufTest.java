@@ -1,4 +1,4 @@
-package netty;
+package netty.other;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
