@@ -66,8 +66,10 @@ public class Question338 {
         int num = Integer.valueOf(input);
 
         int[] result = countBits(num);
+        System.out.print("[");
         for(int i: result){
-            System.out.println(i);
+            System.out.print(i+",");
         }
+        System.out.print("]");
     }
 }

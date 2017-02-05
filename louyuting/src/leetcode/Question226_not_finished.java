@@ -15,7 +15,7 @@ public class Question226_not_finished {
         }
         TreeNode temp = root.left;
         root.left = root.right;
-        root.right = temp;
+        root.2 = temp;
 
         invertTree(root.left);
         invertTree(root.right);*/

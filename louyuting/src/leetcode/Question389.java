@@ -81,14 +81,3 @@ public class Question389 {
         LogUtil.log_debug("result:" + findTheDifference2("aebcd", "abcdfe"));
     }
 }
-
-
-
-
-
-
-
-
-
-
-

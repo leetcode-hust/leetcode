@@ -1,7 +1,5 @@
 package leetcode;
 
-import utils.LogUtil;
-
 /**
  * Created by louyuting on 16/11/24.
  * 260. Single Number III
@@ -49,7 +47,7 @@ public class Question260 {
         int [] nums = {1, 2, 1, 3, 2, 5};
         int [] result = singleNumber(nums);
         for(int i: result){
-            LogUtil.log_debug(""+i);
+            System.out.print(i+",");
         }
     }
 }

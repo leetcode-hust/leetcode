@@ -56,15 +56,15 @@ public class Question26 {
             if (n > nums[i - 1])
                 nums[i++] = n;
         return i;
-}
+    }
 
 
     public static void main(String[] args) {
-        int [] nums = {1,1,2};
+        int [] nums = {1,1,2,2,3};
         int result = removeDuplicates2(nums);
-        LogUtil.log_debug("" + result);
+        LogUtil.log_debug("长度是:" + result);
         for(int i=0; i<result; i++){
-            LogUtil.log_debug(""+nums[i]);
+            LogUtil.log_debug("元素:"+nums[i]);
         }
     }
 }

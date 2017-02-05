@@ -27,9 +27,11 @@ public class Question80 {
     public static void main(String[] args) {
         int [] nums = {1,1,1,2,2,3};
         int result = removeDuplicates(nums);
-        LogUtil.log_debug("" + result);
+        LogUtil.log_debug("数组长度" + result);
+        System.out.print("[");
         for(int i=0; i<result; i++){
-            LogUtil.log_debug(""+nums[i]);
+            System.out.print( nums[i]+", ");
         }
+        System.out.print("]");
     }
 }
