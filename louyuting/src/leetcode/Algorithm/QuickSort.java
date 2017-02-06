@@ -3,7 +3,7 @@ package leetcode.Algorithm;
 /**
  * Created by louyuting on 17/2/5.
  */
-public class FastOrder {
+public class QuickSort {
     /**
      * 一次快速排序
      * @param array 数组
