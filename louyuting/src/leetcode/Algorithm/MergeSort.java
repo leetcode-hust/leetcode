@@ -2,6 +2,7 @@ package leetcode.Algorithm;
 
 /**
  * Created by louyuting on 17/2/6.
+ * 二路归并排序
  */
 public class MergeSort {
 

@@ -2,6 +2,7 @@ package leetcode.Algorithm;
 
 /**
  * Created by louyuting on 17/2/5.
+ * 快速排序
  */
 public class QuickSort {
     /**
