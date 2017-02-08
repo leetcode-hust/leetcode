@@ -56,7 +56,8 @@ public class Question75 {
         int temp;
 
         for (int i=0; i<=indexblue; i++){
-            if(nums[i] == 2){
+            //只要nums[i]为2 就执行交换, 防止2,1,2 这种情况,这种情况下会不被排序
+            while (nums[i] == 2 && i<indexblue){
                 //将nums[i] 与 nums[indexblue] 交换
                 temp = nums[i];
                 nums[i] = nums[indexblue];
@@ -64,7 +65,7 @@ public class Question75 {
                 indexblue--;
             }
 
-            if(nums[i] == 0){
+            while(nums[i] == 0 && i>indexred){
                 //将nums[i] 与 nums[indexred] 交换
                 temp = nums[i];
                 nums[i] = nums[indexred];
@@ -78,7 +79,7 @@ public class Question75 {
 
 
     public static void main(String[] args) {
-        int[] A = {1,0,2,1,1,0,2,1};
+        int[] A = {2,1,2};
 
         sortColors2(A);
 
