@@ -11,7 +11,16 @@ import java.util.List;
 public class Test {
 
     @org.junit.Test
+    public void array(){
+        int [][] a = {{}};
+
+        System.out.print(a.length + " " + a[0].length);
+    }
+
+
+    @org.junit.Test
     public void main(){
+        int[] a1 = new int[22];
 
         List<String> list = new ArrayList<>();
 
