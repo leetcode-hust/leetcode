@@ -5,8 +5,6 @@ package leetcode.Algorithm;
  * 二分查找的 递归与非递归实现
  */
 public class BinarySearch {
-
-
     /**
      * 非递归方式查找
      * @param array
@@ -39,7 +37,6 @@ public class BinarySearch {
      * @return
      */
     public static int binarySearch2(int[] array, int a, int lo, int hi){
-
         if(lo <= hi){
             int mid = (lo+hi)/2 ;
 
@@ -53,9 +50,6 @@ public class BinarySearch {
         }
         return -1;
     }
-
-
-
 
     public static void main(String[] args) {
         int[] arr = {0,1,1,2,3,3,4,7,8,9,12,22,65};
