@@ -1,14 +1,12 @@
 package leetcode.common;
 
 /**
- * Created by louyuting on 16/11/20.
- *
  * 树的节点的定义,Use By 104
  */
 public class TreeNode {
-    private int val;
-    private TreeNode left;
-    private TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
     public TreeNode(int x) { val = x; }
 
     public int getVal() {
