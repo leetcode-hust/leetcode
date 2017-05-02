@@ -4,19 +4,82 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Administrator on 2016/10/29.
  */
 public class Test {
 
-    @org.junit.Test
-    public void array(){
-        int [][] a = {{}};
+    public static int i=0;
 
-        System.out.print(a.length + " " + a[0].length);
+    public static int testtest(){
+        try {
+            i=10;
+            System.out.println("try");
+            return i;
+        }finally {
+            i=100;
+            System.out.println("finally: " + i);
+        }
     }
 
+    @org.junit.Test
+    public void test1(){
+        System.out.println("test:"+ testtest());
+
+        System.out.println(i);
+
+    }
+
+
+    public static void main(String[] args) {
+        Test tt  = new Test();
+    }
+
+
+    /**
+     * 测试 start()方法和 run()方法
+     */
+    @org.junit.Test
+    public void array(){
+        System.out.println("thread1");
+
+        Thread my = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    TimeUnit.MICROSECONDS.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("thread3");
+            }
+        });
+        my.run();
+        System.out.println("thread2");
+    }
+    /**
+     * 测试 start()方法和 run()方法
+     */
+    @org.junit.Test
+    public void tttt(){
+        System.out.println("thread1");
+
+        Thread my = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    TimeUnit.MICROSECONDS.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("thread3");
+            }
+        });
+        my.start();
+        System.out.println("thread2");
+    }
 
     @org.junit.Test
     public void main(){

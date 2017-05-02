@@ -20,9 +20,9 @@ public interface ProjectCommentMapper {
 
     ProjectComment selectByPrimaryKey(String commentId);
 
-    int updateByExampleSelective(@Param("record") ProjectComment record, @Param("example") ProjectCommentExample example);
+    int updateByExampleSelective(@Param("record") ProjectComment record, @Param("netty/example") ProjectCommentExample example);
 
-    int updateByExample(@Param("record") ProjectComment record, @Param("example") ProjectCommentExample example);
+    int updateByExample(@Param("record") ProjectComment record, @Param("netty/example") ProjectCommentExample example);
 
     int updateByPrimaryKeySelective(ProjectComment record);
 

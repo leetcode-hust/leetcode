@@ -20,9 +20,9 @@ public interface UserExperienceMapper {
 
     UserExperience selectByPrimaryKey(String experienceId);
 
-    int updateByExampleSelective(@Param("record") UserExperience record, @Param("example") UserExperienceExample example);
+    int updateByExampleSelective(@Param("record") UserExperience record, @Param("netty/example") UserExperienceExample example);
 
-    int updateByExample(@Param("record") UserExperience record, @Param("example") UserExperienceExample example);
+    int updateByExample(@Param("record") UserExperience record, @Param("netty/example") UserExperienceExample example);
 
     int updateByPrimaryKeySelective(UserExperience record);
 

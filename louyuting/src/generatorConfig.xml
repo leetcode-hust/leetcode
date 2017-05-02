@@ -48,36 +48,12 @@
 			<property name="enableSubPackages" value="false" />
 		</javaClientGenerator>
 		<!-- 指定数据库表 -->
-        <table tableName="sys_activity"></table>
+        <table tableName="bonus"></table>
+        <table tableName="coupon"></table>
         <table tableName="sys_business"></table>
         <table tableName="sys_collection"></table>
         <table tableName="sys_log"></table>
-        <table tableName="sys_picture"></table>
         <table tableName="sys_user"></table>
-		<!--<table tableName="advertisement"></table>
-        <table tableName="assistant_msg"></table>
-		<table tableName="project"></table>
-		<table tableName="project_code_source"></table>
-		<table tableName="project_comment"></table>
-		<table tableName="project_history"></table>
-		<table tableName="project_picture"></table>
-		<table tableName="project_progress"></table>
-		<table tableName="project_question"></table>
-		<table tableName="project_type"></table>
-        <table tableName="sys_company"></table>
-		<table tableName="sys_log"></table>
-		<table tableName="sys_permission"></table>
-		<table tableName="sys_role"></table>
-		<table tableName="sys_role_permission"></table>
-		<table tableName="sys_user"></table>
-		<table tableName="sys_user_role"></table>
-		<table tableName="user_bill"></table>
-		<table tableName="user_experience"></table>
-		<table tableName="user_invoice"></table>
-		<table tableName="user_msg"></table>
-		<table tableName="user_skill"></table>
-		<table tableName="user_skill_middle"></table>-->
-		
 		<!-- 有些表的字段需要指定java类型
 		 <table schema="" tableName="">
 			<columnOverride column="" javaType="" />

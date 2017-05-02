@@ -20,9 +20,9 @@ public interface SysRoleMapper {
 
     SysRole selectByPrimaryKey(String roleId);
 
-    int updateByExampleSelective(@Param("record") SysRole record, @Param("example") SysRoleExample example);
+    int updateByExampleSelective(@Param("record") SysRole record, @Param("netty/example") SysRoleExample example);
 
-    int updateByExample(@Param("record") SysRole record, @Param("example") SysRoleExample example);
+    int updateByExample(@Param("record") SysRole record, @Param("netty/example") SysRoleExample example);
 
     int updateByPrimaryKeySelective(SysRole record);
 

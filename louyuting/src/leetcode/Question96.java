@@ -18,9 +18,12 @@ public class Question96 {
         return f[n];
     }
 
-
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         //
-        System.out.println(Question96.numTrees(3));
+        System.out.println(Question96.numTrees(10));
     }
 }

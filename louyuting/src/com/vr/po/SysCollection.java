@@ -7,9 +7,13 @@ public class SysCollection {
 
     private String userId;
 
-    private String actId;
+    private String typeId;
+
+    private Integer type;
 
     private Date createdTime;
+
+    private Float money;
 
     private Integer status;
 
@@ -35,12 +39,20 @@ public class SysCollection {
         this.userId = userId == null ? null : userId.trim();
     }
 
-    public String getActId() {
-        return actId;
+    public String getTypeId() {
+        return typeId;
     }
 
-    public void setActId(String actId) {
-        this.actId = actId == null ? null : actId.trim();
+    public void setTypeId(String typeId) {
+        this.typeId = typeId == null ? null : typeId.trim();
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     public Date getCreatedTime() {
@@ -49,6 +61,14 @@ public class SysCollection {
 
     public void setCreatedTime(Date createdTime) {
         this.createdTime = createdTime;
+    }
+
+    public Float getMoney() {
+        return money;
+    }
+
+    public void setMoney(Float money) {
+        this.money = money;
     }
 
     public Integer getStatus() {

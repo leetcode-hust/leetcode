@@ -20,9 +20,9 @@ public interface UserSkillMiddleMapper {
 
     UserSkillMiddle selectByPrimaryKey(String id);
 
-    int updateByExampleSelective(@Param("record") UserSkillMiddle record, @Param("example") UserSkillMiddleExample example);
+    int updateByExampleSelective(@Param("record") UserSkillMiddle record, @Param("netty/example") UserSkillMiddleExample example);
 
-    int updateByExample(@Param("record") UserSkillMiddle record, @Param("example") UserSkillMiddleExample example);
+    int updateByExample(@Param("record") UserSkillMiddle record, @Param("netty/example") UserSkillMiddleExample example);
 
     int updateByPrimaryKeySelective(UserSkillMiddle record);
 

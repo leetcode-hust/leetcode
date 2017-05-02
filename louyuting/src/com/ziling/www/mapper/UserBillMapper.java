@@ -20,9 +20,9 @@ public interface UserBillMapper {
 
     UserBill selectByPrimaryKey(String billId);
 
-    int updateByExampleSelective(@Param("record") UserBill record, @Param("example") UserBillExample example);
+    int updateByExampleSelective(@Param("record") UserBill record, @Param("netty/example") UserBillExample example);
 
-    int updateByExample(@Param("record") UserBill record, @Param("example") UserBillExample example);
+    int updateByExample(@Param("record") UserBill record, @Param("netty/example") UserBillExample example);
 
     int updateByPrimaryKeySelective(UserBill record);
 

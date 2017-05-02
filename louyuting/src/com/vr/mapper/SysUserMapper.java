@@ -20,9 +20,9 @@ public interface SysUserMapper {
 
     SysUser selectByPrimaryKey(String userId);
 
-    int updateByExampleSelective(@Param("record") SysUser record, @Param("example") SysUserExample example);
+    int updateByExampleSelective(@Param("record") SysUser record, @Param("netty/example") SysUserExample example);
 
-    int updateByExample(@Param("record") SysUser record, @Param("example") SysUserExample example);
+    int updateByExample(@Param("record") SysUser record, @Param("netty/example") SysUserExample example);
 
     int updateByPrimaryKeySelective(SysUser record);
 

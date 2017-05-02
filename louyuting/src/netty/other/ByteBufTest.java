@@ -2,7 +2,6 @@ package netty.other;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import utils.LogUtil;
 
 /**
  * Created by louyuting on 16/12/16.
@@ -19,7 +18,7 @@ public class ByteBufTest {
         }
         //读数据
         for(int i=0; i<buf.capacity(); i++){
-            LogUtil.log_debug(""+buf.getByte(i));
+            System.out.print(buf.getByte(i)+", ");
         }
 
     }

@@ -20,9 +20,9 @@ public interface ProjectProgressMapper {
 
     ProjectProgress selectByPrimaryKey(String progressId);
 
-    int updateByExampleSelective(@Param("record") ProjectProgress record, @Param("example") ProjectProgressExample example);
+    int updateByExampleSelective(@Param("record") ProjectProgress record, @Param("netty/example") ProjectProgressExample example);
 
-    int updateByExample(@Param("record") ProjectProgress record, @Param("example") ProjectProgressExample example);
+    int updateByExample(@Param("record") ProjectProgress record, @Param("netty/example") ProjectProgressExample example);
 
     int updateByPrimaryKeySelective(ProjectProgress record);
 

@@ -20,9 +20,9 @@ public interface ProjectHistoryMapper {
 
     ProjectHistory selectByPrimaryKey(String id);
 
-    int updateByExampleSelective(@Param("record") ProjectHistory record, @Param("example") ProjectHistoryExample example);
+    int updateByExampleSelective(@Param("record") ProjectHistory record, @Param("netty/example") ProjectHistoryExample example);
 
-    int updateByExample(@Param("record") ProjectHistory record, @Param("example") ProjectHistoryExample example);
+    int updateByExample(@Param("record") ProjectHistory record, @Param("netty/example") ProjectHistoryExample example);
 
     int updateByPrimaryKeySelective(ProjectHistory record);
 

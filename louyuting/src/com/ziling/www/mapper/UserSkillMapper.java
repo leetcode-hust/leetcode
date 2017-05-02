@@ -20,9 +20,9 @@ public interface UserSkillMapper {
 
     UserSkill selectByPrimaryKey(String skillId);
 
-    int updateByExampleSelective(@Param("record") UserSkill record, @Param("example") UserSkillExample example);
+    int updateByExampleSelective(@Param("record") UserSkill record, @Param("netty/example") UserSkillExample example);
 
-    int updateByExample(@Param("record") UserSkill record, @Param("example") UserSkillExample example);
+    int updateByExample(@Param("record") UserSkill record, @Param("netty/example") UserSkillExample example);
 
     int updateByPrimaryKeySelective(UserSkill record);
 

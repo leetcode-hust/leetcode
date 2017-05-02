@@ -20,9 +20,9 @@ public interface SysBusinessMapper {
 
     SysBusiness selectByPrimaryKey(String busId);
 
-    int updateByExampleSelective(@Param("record") SysBusiness record, @Param("example") SysBusinessExample example);
+    int updateByExampleSelective(@Param("record") SysBusiness record, @Param("netty/example") SysBusinessExample example);
 
-    int updateByExample(@Param("record") SysBusiness record, @Param("example") SysBusinessExample example);
+    int updateByExample(@Param("record") SysBusiness record, @Param("netty/example") SysBusinessExample example);
 
     int updateByPrimaryKeySelective(SysBusiness record);
 

@@ -245,73 +245,133 @@ public class SysCollectionExample {
             return (Criteria) this;
         }
 
-        public Criteria andActIdIsNull() {
-            addCriterion("act_id is null");
+        public Criteria andTypeIdIsNull() {
+            addCriterion("type_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andActIdIsNotNull() {
-            addCriterion("act_id is not null");
+        public Criteria andTypeIdIsNotNull() {
+            addCriterion("type_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andActIdEqualTo(String value) {
-            addCriterion("act_id =", value, "actId");
+        public Criteria andTypeIdEqualTo(String value) {
+            addCriterion("type_id =", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdNotEqualTo(String value) {
-            addCriterion("act_id <>", value, "actId");
+        public Criteria andTypeIdNotEqualTo(String value) {
+            addCriterion("type_id <>", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdGreaterThan(String value) {
-            addCriterion("act_id >", value, "actId");
+        public Criteria andTypeIdGreaterThan(String value) {
+            addCriterion("type_id >", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdGreaterThanOrEqualTo(String value) {
-            addCriterion("act_id >=", value, "actId");
+        public Criteria andTypeIdGreaterThanOrEqualTo(String value) {
+            addCriterion("type_id >=", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdLessThan(String value) {
-            addCriterion("act_id <", value, "actId");
+        public Criteria andTypeIdLessThan(String value) {
+            addCriterion("type_id <", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdLessThanOrEqualTo(String value) {
-            addCriterion("act_id <=", value, "actId");
+        public Criteria andTypeIdLessThanOrEqualTo(String value) {
+            addCriterion("type_id <=", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdLike(String value) {
-            addCriterion("act_id like", value, "actId");
+        public Criteria andTypeIdLike(String value) {
+            addCriterion("type_id like", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdNotLike(String value) {
-            addCriterion("act_id not like", value, "actId");
+        public Criteria andTypeIdNotLike(String value) {
+            addCriterion("type_id not like", value, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdIn(List<String> values) {
-            addCriterion("act_id in", values, "actId");
+        public Criteria andTypeIdIn(List<String> values) {
+            addCriterion("type_id in", values, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdNotIn(List<String> values) {
-            addCriterion("act_id not in", values, "actId");
+        public Criteria andTypeIdNotIn(List<String> values) {
+            addCriterion("type_id not in", values, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdBetween(String value1, String value2) {
-            addCriterion("act_id between", value1, value2, "actId");
+        public Criteria andTypeIdBetween(String value1, String value2) {
+            addCriterion("type_id between", value1, value2, "typeId");
             return (Criteria) this;
         }
 
-        public Criteria andActIdNotBetween(String value1, String value2) {
-            addCriterion("act_id not between", value1, value2, "actId");
+        public Criteria andTypeIdNotBetween(String value1, String value2) {
+            addCriterion("type_id not between", value1, value2, "typeId");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNull() {
+            addCriterion("type is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIsNotNull() {
+            addCriterion("type is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeEqualTo(Integer value) {
+            addCriterion("type =", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotEqualTo(Integer value) {
+            addCriterion("type <>", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThan(Integer value) {
+            addCriterion("type >", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("type >=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThan(Integer value) {
+            addCriterion("type <", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeLessThanOrEqualTo(Integer value) {
+            addCriterion("type <=", value, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeIn(List<Integer> values) {
+            addCriterion("type in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotIn(List<Integer> values) {
+            addCriterion("type not in", values, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeBetween(Integer value1, Integer value2) {
+            addCriterion("type between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andTypeNotBetween(Integer value1, Integer value2) {
+            addCriterion("type not between", value1, value2, "type");
             return (Criteria) this;
         }
 
@@ -372,6 +432,66 @@ public class SysCollectionExample {
 
         public Criteria andCreatedTimeNotBetween(Date value1, Date value2) {
             addCriterion("created_time not between", value1, value2, "createdTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIsNull() {
+            addCriterion("money is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIsNotNull() {
+            addCriterion("money is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyEqualTo(Float value) {
+            addCriterion("money =", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotEqualTo(Float value) {
+            addCriterion("money <>", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyGreaterThan(Float value) {
+            addCriterion("money >", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyGreaterThanOrEqualTo(Float value) {
+            addCriterion("money >=", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLessThan(Float value) {
+            addCriterion("money <", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyLessThanOrEqualTo(Float value) {
+            addCriterion("money <=", value, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyIn(List<Float> values) {
+            addCriterion("money in", values, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotIn(List<Float> values) {
+            addCriterion("money not in", values, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyBetween(Float value1, Float value2) {
+            addCriterion("money between", value1, value2, "money");
+            return (Criteria) this;
+        }
+
+        public Criteria andMoneyNotBetween(Float value1, Float value2) {
+            addCriterion("money not between", value1, value2, "money");
             return (Criteria) this;
         }
 

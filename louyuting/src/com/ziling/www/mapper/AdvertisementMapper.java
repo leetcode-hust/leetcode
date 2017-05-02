@@ -20,9 +20,9 @@ public interface AdvertisementMapper {
 
     Advertisement selectByPrimaryKey(String adId);
 
-    int updateByExampleSelective(@Param("record") Advertisement record, @Param("example") AdvertisementExample example);
+    int updateByExampleSelective(@Param("record") Advertisement record, @Param("netty/example") AdvertisementExample example);
 
-    int updateByExample(@Param("record") Advertisement record, @Param("example") AdvertisementExample example);
+    int updateByExample(@Param("record") Advertisement record, @Param("netty/example") AdvertisementExample example);
 
     int updateByPrimaryKeySelective(Advertisement record);
 

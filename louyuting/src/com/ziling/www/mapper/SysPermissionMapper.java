@@ -20,9 +20,9 @@ public interface SysPermissionMapper {
 
     SysPermission selectByPrimaryKey(String permissionId);
 
-    int updateByExampleSelective(@Param("record") SysPermission record, @Param("example") SysPermissionExample example);
+    int updateByExampleSelective(@Param("record") SysPermission record, @Param("netty/example") SysPermissionExample example);
 
-    int updateByExample(@Param("record") SysPermission record, @Param("example") SysPermissionExample example);
+    int updateByExample(@Param("record") SysPermission record, @Param("netty/example") SysPermissionExample example);
 
     int updateByPrimaryKeySelective(SysPermission record);
 

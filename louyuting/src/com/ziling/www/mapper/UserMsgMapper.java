@@ -20,9 +20,9 @@ public interface UserMsgMapper {
 
     UserMsg selectByPrimaryKey(String msgId);
 
-    int updateByExampleSelective(@Param("record") UserMsg record, @Param("example") UserMsgExample example);
+    int updateByExampleSelective(@Param("record") UserMsg record, @Param("netty/example") UserMsgExample example);
 
-    int updateByExample(@Param("record") UserMsg record, @Param("example") UserMsgExample example);
+    int updateByExample(@Param("record") UserMsg record, @Param("netty/example") UserMsgExample example);
 
     int updateByPrimaryKeySelective(UserMsg record);
 

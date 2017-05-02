@@ -20,9 +20,9 @@ public interface AssistantMsgMapper {
 
     AssistantMsg selectByPrimaryKey(String id);
 
-    int updateByExampleSelective(@Param("record") AssistantMsg record, @Param("example") AssistantMsgExample example);
+    int updateByExampleSelective(@Param("record") AssistantMsg record, @Param("netty/example") AssistantMsgExample example);
 
-    int updateByExample(@Param("record") AssistantMsg record, @Param("example") AssistantMsgExample example);
+    int updateByExample(@Param("record") AssistantMsg record, @Param("netty/example") AssistantMsgExample example);
 
     int updateByPrimaryKeySelective(AssistantMsg record);
 

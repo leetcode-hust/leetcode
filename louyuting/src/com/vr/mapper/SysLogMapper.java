@@ -20,9 +20,9 @@ public interface SysLogMapper {
 
     SysLog selectByPrimaryKey(String logId);
 
-    int updateByExampleSelective(@Param("record") SysLog record, @Param("example") SysLogExample example);
+    int updateByExampleSelective(@Param("record") SysLog record, @Param("netty/example") SysLogExample example);
 
-    int updateByExample(@Param("record") SysLog record, @Param("example") SysLogExample example);
+    int updateByExample(@Param("record") SysLog record, @Param("netty/example") SysLogExample example);
 
     int updateByPrimaryKeySelective(SysLog record);
 

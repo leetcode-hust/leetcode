@@ -20,9 +20,9 @@ public interface ProjectTypeMapper {
 
     ProjectType selectByPrimaryKey(String categoryId);
 
-    int updateByExampleSelective(@Param("record") ProjectType record, @Param("example") ProjectTypeExample example);
+    int updateByExampleSelective(@Param("record") ProjectType record, @Param("netty/example") ProjectTypeExample example);
 
-    int updateByExample(@Param("record") ProjectType record, @Param("example") ProjectTypeExample example);
+    int updateByExample(@Param("record") ProjectType record, @Param("netty/example") ProjectTypeExample example);
 
     int updateByPrimaryKeySelective(ProjectType record);
 

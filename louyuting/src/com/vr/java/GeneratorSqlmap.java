@@ -21,8 +21,7 @@ public class GeneratorSqlmap {
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config = cp.parseConfiguration(configFile);
 		DefaultShellCallback callback = new DefaultShellCallback(overwrite);
-		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config,
-				callback, warnings);
+		MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
 		myBatisGenerator.generate(null);
 
 	}

@@ -39,7 +39,7 @@
   </sql>
   <sql id="Update_By_Example_Where_Clause" >
     <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+      <foreach collection="netty.example.oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
           <trim prefix="(" suffix=")" prefixOverrides="and" >
             <foreach collection="criteria.criteria" item="criterion" >

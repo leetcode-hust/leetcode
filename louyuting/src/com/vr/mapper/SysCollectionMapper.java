@@ -20,9 +20,9 @@ public interface SysCollectionMapper {
 
     SysCollection selectByPrimaryKey(String collectionId);
 
-    int updateByExampleSelective(@Param("record") SysCollection record, @Param("example") SysCollectionExample example);
+    int updateByExampleSelective(@Param("record") SysCollection record, @Param("netty/example") SysCollectionExample example);
 
-    int updateByExample(@Param("record") SysCollection record, @Param("example") SysCollectionExample example);
+    int updateByExample(@Param("record") SysCollection record, @Param("netty/example") SysCollectionExample example);
 
     int updateByPrimaryKeySelective(SysCollection record);
 

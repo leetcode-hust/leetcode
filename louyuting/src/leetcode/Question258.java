@@ -9,7 +9,7 @@ import utils.LogUtil;
  * 258. Add Digits 数字的每位求和,直至结果为个位数
  Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
 
- For example:
+ For netty.example:
 
  Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
 
@@ -48,7 +48,7 @@ public class Question258 {
      * 大天朝算法真是厉害了..
      *  1行解决..
      *  思路:
-     *      example: 比如438
+     *      netty.example: 比如438
      *      438  ==  40*10 + 3*10 +8
      *      4+3+8 == 4*(10%9)*(10%9) + 3*(10%9) + 8%9=15
      *

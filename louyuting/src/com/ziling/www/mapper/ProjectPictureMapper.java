@@ -20,9 +20,9 @@ public interface ProjectPictureMapper {
 
     ProjectPicture selectByPrimaryKey(String pictureId);
 
-    int updateByExampleSelective(@Param("record") ProjectPicture record, @Param("example") ProjectPictureExample example);
+    int updateByExampleSelective(@Param("record") ProjectPicture record, @Param("netty/example") ProjectPictureExample example);
 
-    int updateByExample(@Param("record") ProjectPicture record, @Param("example") ProjectPictureExample example);
+    int updateByExample(@Param("record") ProjectPicture record, @Param("netty/example") ProjectPictureExample example);
 
     int updateByPrimaryKeySelective(ProjectPicture record);
 

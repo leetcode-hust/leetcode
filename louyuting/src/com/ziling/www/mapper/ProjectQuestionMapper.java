@@ -20,9 +20,9 @@ public interface ProjectQuestionMapper {
 
     ProjectQuestion selectByPrimaryKey(String questionId);
 
-    int updateByExampleSelective(@Param("record") ProjectQuestion record, @Param("example") ProjectQuestionExample example);
+    int updateByExampleSelective(@Param("record") ProjectQuestion record, @Param("netty/example") ProjectQuestionExample example);
 
-    int updateByExample(@Param("record") ProjectQuestion record, @Param("example") ProjectQuestionExample example);
+    int updateByExample(@Param("record") ProjectQuestion record, @Param("netty/example") ProjectQuestionExample example);
 
     int updateByPrimaryKeySelective(ProjectQuestion record);
 

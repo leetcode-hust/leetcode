@@ -20,9 +20,9 @@ public interface UserInvoiceMapper {
 
     UserInvoice selectByPrimaryKey(String invoicelId);
 
-    int updateByExampleSelective(@Param("record") UserInvoice record, @Param("example") UserInvoiceExample example);
+    int updateByExampleSelective(@Param("record") UserInvoice record, @Param("netty/example") UserInvoiceExample example);
 
-    int updateByExample(@Param("record") UserInvoice record, @Param("example") UserInvoiceExample example);
+    int updateByExample(@Param("record") UserInvoice record, @Param("netty/example") UserInvoiceExample example);
 
     int updateByPrimaryKeySelective(UserInvoice record);
 

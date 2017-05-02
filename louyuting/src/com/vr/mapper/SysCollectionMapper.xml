@@ -4,8 +4,10 @@
   <resultMap id="BaseResultMap" type="com.vr.po.SysCollection" >
     <id column="collection_id" property="collectionId" jdbcType="VARCHAR" />
     <result column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="act_id" property="actId" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
     <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="money" property="money" jdbcType="REAL" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="bak_1" property="bak1" jdbcType="VARCHAR" />
     <result column="bak_2" property="bak2" jdbcType="VARCHAR" />
@@ -42,7 +44,7 @@
   </sql>
   <sql id="Update_By_Example_Where_Clause" >
     <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+      <foreach collection="netty.example.oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
           <trim prefix="(" suffix=")" prefixOverrides="and" >
             <foreach collection="criteria.criteria" item="criterion" >
@@ -70,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    collection_id, user_id, act_id, created_time, status, bak_1, bak_2, bak_3
+    collection_id, user_id, type_id, type, created_time, money, status, bak_1, bak_2, 
+    bak_3
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.vr.po.SysCollectionExample" >
     select
@@ -103,12 +106,14 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.vr.po.SysCollection" >
-    insert into sys_collection (collection_id, user_id, act_id, 
-      created_time, status, bak_1, 
-      bak_2, bak_3)
-    values (#{collectionId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{actId,jdbcType=VARCHAR}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{bak1,jdbcType=VARCHAR}, 
-      #{bak2,jdbcType=VARCHAR}, #{bak3,jdbcType=INTEGER})
+    insert into sys_collection (collection_id, user_id, type_id, 
+      type, created_time, money, 
+      status, bak_1, bak_2, 
+      bak_3)
+    values (#{collectionId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{typeId,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{createdTime,jdbcType=TIMESTAMP}, #{money,jdbcType=REAL}, 
+      #{status,jdbcType=INTEGER}, #{bak1,jdbcType=VARCHAR}, #{bak2,jdbcType=VARCHAR}, 
+      #{bak3,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.vr.po.SysCollection" >
     insert into sys_collection
@@ -119,11 +124,17 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="actId != null" >
-        act_id,
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="type != null" >
+        type,
       </if>
       <if test="createdTime != null" >
         created_time,
+      </if>
+      <if test="money != null" >
+        money,
       </if>
       <if test="status != null" >
         status,
@@ -145,11 +156,17 @@
       <if test="userId != null" >
         #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="actId != null" >
-        #{actId,jdbcType=VARCHAR},
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
       </if>
       <if test="createdTime != null" >
         #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=REAL},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -180,11 +197,17 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
-      <if test="record.actId != null" >
-        act_id = #{record.actId,jdbcType=VARCHAR},
+      <if test="record.typeId != null" >
+        type_id = #{record.typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
       </if>
       <if test="record.createdTime != null" >
         created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.money != null" >
+        money = #{record.money,jdbcType=REAL},
       </if>
       <if test="record.status != null" >
         status = #{record.status,jdbcType=INTEGER},
@@ -207,8 +230,10 @@
     update sys_collection
     set collection_id = #{record.collectionId,jdbcType=VARCHAR},
       user_id = #{record.userId,jdbcType=VARCHAR},
-      act_id = #{record.actId,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
       created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      money = #{record.money,jdbcType=REAL},
       status = #{record.status,jdbcType=INTEGER},
       bak_1 = #{record.bak1,jdbcType=VARCHAR},
       bak_2 = #{record.bak2,jdbcType=VARCHAR},
@@ -223,11 +248,17 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=VARCHAR},
       </if>
-      <if test="actId != null" >
-        act_id = #{actId,jdbcType=VARCHAR},
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
       </if>
       <if test="createdTime != null" >
         created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=REAL},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -247,8 +278,10 @@
   <update id="updateByPrimaryKey" parameterType="com.vr.po.SysCollection" >
     update sys_collection
     set user_id = #{userId,jdbcType=VARCHAR},
-      act_id = #{actId,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
+      money = #{money,jdbcType=REAL},
       status = #{status,jdbcType=INTEGER},
       bak_1 = #{bak1,jdbcType=VARCHAR},
       bak_2 = #{bak2,jdbcType=VARCHAR},

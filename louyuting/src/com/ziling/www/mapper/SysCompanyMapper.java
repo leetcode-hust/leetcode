@@ -20,9 +20,9 @@ public interface SysCompanyMapper {
 
     SysCompany selectByPrimaryKey(String companyId);
 
-    int updateByExampleSelective(@Param("record") SysCompany record, @Param("example") SysCompanyExample example);
+    int updateByExampleSelective(@Param("record") SysCompany record, @Param("netty/example") SysCompanyExample example);
 
-    int updateByExample(@Param("record") SysCompany record, @Param("example") SysCompanyExample example);
+    int updateByExample(@Param("record") SysCompany record, @Param("netty/example") SysCompanyExample example);
 
     int updateByPrimaryKeySelective(SysCompany record);
 

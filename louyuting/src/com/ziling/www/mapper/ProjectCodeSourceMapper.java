@@ -20,9 +20,9 @@ public interface ProjectCodeSourceMapper {
 
     ProjectCodeSource selectByPrimaryKey(String codeId);
 
-    int updateByExampleSelective(@Param("record") ProjectCodeSource record, @Param("example") ProjectCodeSourceExample example);
+    int updateByExampleSelective(@Param("record") ProjectCodeSource record, @Param("netty/example") ProjectCodeSourceExample example);
 
-    int updateByExample(@Param("record") ProjectCodeSource record, @Param("example") ProjectCodeSourceExample example);
+    int updateByExample(@Param("record") ProjectCodeSource record, @Param("netty/example") ProjectCodeSourceExample example);
 
     int updateByPrimaryKeySelective(ProjectCodeSource record);
 
