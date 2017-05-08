@@ -2,8 +2,6 @@ package chenjing;
 
 
 public class Chenjing1 {
-
-
     /**
      *
      * @param a
