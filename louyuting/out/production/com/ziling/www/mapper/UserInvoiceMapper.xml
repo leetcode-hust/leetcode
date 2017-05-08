@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ziling.www.mapper.UserInvoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.ziling.www.po.UserInvoice" >
+    <id column="invoicel_id" property="invoicelId" jdbcType="VARCHAR" />
+    <result column="project_id" property="projectId" jdbcType="VARCHAR" />
+    <result column="payer" property="payer" jdbcType="VARCHAR" />
+    <result column="tax_number" property="taxNumber" jdbcType="VARCHAR" />
+    <result column="bank_no" property="bankNo" jdbcType="VARCHAR" />
+    <result column="openBank" property="openbank" jdbcType="VARCHAR" />
+    <result column="target_address" property="targetAddress" jdbcType="VARCHAR" />
+    <result column="target_address_postcode" property="targetAddressPostcode" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="REAL" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="invoice_status" property="invoiceStatus" jdbcType="INTEGER" />
+    <result column="bak_1" property="bak1" jdbcType="VARCHAR" />
+    <result column="bak_2" property="bak2" jdbcType="VARCHAR" />
+    <result column="bak_3" property="bak3" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="netty.example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    invoicel_id, project_id, payer, tax_number, bank_no, openBank, target_address, target_address_postcode, 
+    price, description, phone, created_time, invoice_status, bak_1, bak_2, bak_3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ziling.www.po.UserInvoiceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_invoice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_invoice
+    where invoicel_id = #{invoicelId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_invoice
+    where invoicel_id = #{invoicelId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ziling.www.po.UserInvoiceExample" >
+    delete from user_invoice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ziling.www.po.UserInvoice" >
+    insert into user_invoice (invoicel_id, project_id, payer, 
+      tax_number, bank_no, openBank, 
+      target_address, target_address_postcode, price, 
+      description, phone, created_time, 
+      invoice_status, bak_1, bak_2, 
+      bak_3)
+    values (#{invoicelId,jdbcType=VARCHAR}, #{projectId,jdbcType=VARCHAR}, #{payer,jdbcType=VARCHAR}, 
+      #{taxNumber,jdbcType=VARCHAR}, #{bankNo,jdbcType=VARCHAR}, #{openbank,jdbcType=VARCHAR}, 
+      #{targetAddress,jdbcType=VARCHAR}, #{targetAddressPostcode,jdbcType=VARCHAR}, #{price,jdbcType=REAL}, 
+      #{description,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{invoiceStatus,jdbcType=INTEGER}, #{bak1,jdbcType=VARCHAR}, #{bak2,jdbcType=VARCHAR}, 
+      #{bak3,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ziling.www.po.UserInvoice" >
+    insert into user_invoice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="invoicelId != null" >
+        invoicel_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="payer != null" >
+        payer,
+      </if>
+      <if test="taxNumber != null" >
+        tax_number,
+      </if>
+      <if test="bankNo != null" >
+        bank_no,
+      </if>
+      <if test="openbank != null" >
+        openBank,
+      </if>
+      <if test="targetAddress != null" >
+        target_address,
+      </if>
+      <if test="targetAddressPostcode != null" >
+        target_address_postcode,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="invoiceStatus != null" >
+        invoice_status,
+      </if>
+      <if test="bak1 != null" >
+        bak_1,
+      </if>
+      <if test="bak2 != null" >
+        bak_2,
+      </if>
+      <if test="bak3 != null" >
+        bak_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="invoicelId != null" >
+        #{invoicelId,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="payer != null" >
+        #{payer,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNumber != null" >
+        #{taxNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null" >
+        #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="openbank != null" >
+        #{openbank,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAddress != null" >
+        #{targetAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAddressPostcode != null" >
+        #{targetAddressPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceStatus != null" >
+        #{invoiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bak1 != null" >
+        #{bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        #{bak3,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ziling.www.po.UserInvoiceExample" resultType="java.lang.Integer" >
+    select count(*) from user_invoice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user_invoice
+    <set >
+      <if test="record.invoicelId != null" >
+        invoicel_id = #{record.invoicelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectId != null" >
+        project_id = #{record.projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payer != null" >
+        payer = #{record.payer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.taxNumber != null" >
+        tax_number = #{record.taxNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankNo != null" >
+        bank_no = #{record.bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openbank != null" >
+        openBank = #{record.openbank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetAddress != null" >
+        target_address = #{record.targetAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetAddressPostcode != null" >
+        target_address_postcode = #{record.targetAddressPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=REAL},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null" >
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.invoiceStatus != null" >
+        invoice_status = #{record.invoiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.bak1 != null" >
+        bak_1 = #{record.bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bak2 != null" >
+        bak_2 = #{record.bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bak3 != null" >
+        bak_3 = #{record.bak3,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user_invoice
+    set invoicel_id = #{record.invoicelId,jdbcType=VARCHAR},
+      project_id = #{record.projectId,jdbcType=VARCHAR},
+      payer = #{record.payer,jdbcType=VARCHAR},
+      tax_number = #{record.taxNumber,jdbcType=VARCHAR},
+      bank_no = #{record.bankNo,jdbcType=VARCHAR},
+      openBank = #{record.openbank,jdbcType=VARCHAR},
+      target_address = #{record.targetAddress,jdbcType=VARCHAR},
+      target_address_postcode = #{record.targetAddressPostcode,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=REAL},
+      description = #{record.description,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      invoice_status = #{record.invoiceStatus,jdbcType=INTEGER},
+      bak_1 = #{record.bak1,jdbcType=VARCHAR},
+      bak_2 = #{record.bak2,jdbcType=VARCHAR},
+      bak_3 = #{record.bak3,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ziling.www.po.UserInvoice" >
+    update user_invoice
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=VARCHAR},
+      </if>
+      <if test="payer != null" >
+        payer = #{payer,jdbcType=VARCHAR},
+      </if>
+      <if test="taxNumber != null" >
+        tax_number = #{taxNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="bankNo != null" >
+        bank_no = #{bankNo,jdbcType=VARCHAR},
+      </if>
+      <if test="openbank != null" >
+        openBank = #{openbank,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAddress != null" >
+        target_address = #{targetAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="targetAddressPostcode != null" >
+        target_address_postcode = #{targetAddressPostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=REAL},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceStatus != null" >
+        invoice_status = #{invoiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bak1 != null" >
+        bak_1 = #{bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        bak_2 = #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        bak_3 = #{bak3,jdbcType=INTEGER},
+      </if>
+    </set>
+    where invoicel_id = #{invoicelId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ziling.www.po.UserInvoice" >
+    update user_invoice
+    set project_id = #{projectId,jdbcType=VARCHAR},
+      payer = #{payer,jdbcType=VARCHAR},
+      tax_number = #{taxNumber,jdbcType=VARCHAR},
+      bank_no = #{bankNo,jdbcType=VARCHAR},
+      openBank = #{openbank,jdbcType=VARCHAR},
+      target_address = #{targetAddress,jdbcType=VARCHAR},
+      target_address_postcode = #{targetAddressPostcode,jdbcType=VARCHAR},
+      price = #{price,jdbcType=REAL},
+      description = #{description,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      invoice_status = #{invoiceStatus,jdbcType=INTEGER},
+      bak_1 = #{bak1,jdbcType=VARCHAR},
+      bak_2 = #{bak2,jdbcType=VARCHAR},
+      bak_3 = #{bak3,jdbcType=INTEGER}
+    where invoicel_id = #{invoicelId,jdbcType=VARCHAR}
+  </update>
+</mapper>

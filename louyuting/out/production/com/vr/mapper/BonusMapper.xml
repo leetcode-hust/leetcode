@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vr.mapper.BonusMapper" >
+  <resultMap id="BaseResultMap" type="com.vr.po.Bonus" >
+    <id column="bonus_id" property="bonusId" jdbcType="VARCHAR" />
+    <result column="belong_to" property="belongTo" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="constant_day" property="constantDay" jdbcType="INTEGER" />
+    <result column="totle_money" property="totleMoney" jdbcType="REAL" />
+    <result column="total_number" property="totalNumber" jdbcType="INTEGER" />
+    <result column="left_money" property="leftMoney" jdbcType="REAL" />
+    <result column="left_number" property="leftNumber" jdbcType="INTEGER" />
+    <result column="picture_url" property="pictureUrl" jdbcType="VARCHAR" />
+    <result column="picture_name" property="pictureName" jdbcType="VARCHAR" />
+    <result column="model_url" property="modelUrl" jdbcType="VARCHAR" />
+    <result column="model_name" property="modelName" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="video_name" property="videoName" jdbcType="VARCHAR" />
+    <result column="is_finished" property="isFinished" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="bak_1" property="bak1" jdbcType="VARCHAR" />
+    <result column="bak_2" property="bak2" jdbcType="VARCHAR" />
+    <result column="bak_3" property="bak3" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="netty.example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    bonus_id, belong_to, start_time, end_time, constant_day, totle_money, total_number, 
+    left_money, left_number, picture_url, picture_name, model_url, model_name, video_url, 
+    video_name, is_finished, is_delete, status, bak_1, bak_2, bak_3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.vr.po.BonusExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from bonus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from bonus
+    where bonus_id = #{bonusId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from bonus
+    where bonus_id = #{bonusId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vr.po.BonusExample" >
+    delete from bonus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vr.po.Bonus" >
+    insert into bonus (bonus_id, belong_to, start_time, 
+      end_time, constant_day, totle_money, 
+      total_number, left_money, left_number, 
+      picture_url, picture_name, model_url, 
+      model_name, video_url, video_name, 
+      is_finished, is_delete, status, 
+      bak_1, bak_2, bak_3)
+    values (#{bonusId,jdbcType=VARCHAR}, #{belongTo,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{constantDay,jdbcType=INTEGER}, #{totleMoney,jdbcType=REAL}, 
+      #{totalNumber,jdbcType=INTEGER}, #{leftMoney,jdbcType=REAL}, #{leftNumber,jdbcType=INTEGER}, 
+      #{pictureUrl,jdbcType=VARCHAR}, #{pictureName,jdbcType=VARCHAR}, #{modelUrl,jdbcType=VARCHAR}, 
+      #{modelName,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, #{videoName,jdbcType=VARCHAR}, 
+      #{isFinished,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{bak1,jdbcType=VARCHAR}, #{bak2,jdbcType=VARCHAR}, #{bak3,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vr.po.Bonus" >
+    insert into bonus
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bonusId != null" >
+        bonus_id,
+      </if>
+      <if test="belongTo != null" >
+        belong_to,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="constantDay != null" >
+        constant_day,
+      </if>
+      <if test="totleMoney != null" >
+        totle_money,
+      </if>
+      <if test="totalNumber != null" >
+        total_number,
+      </if>
+      <if test="leftMoney != null" >
+        left_money,
+      </if>
+      <if test="leftNumber != null" >
+        left_number,
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url,
+      </if>
+      <if test="pictureName != null" >
+        picture_name,
+      </if>
+      <if test="modelUrl != null" >
+        model_url,
+      </if>
+      <if test="modelName != null" >
+        model_name,
+      </if>
+      <if test="videoUrl != null" >
+        video_url,
+      </if>
+      <if test="videoName != null" >
+        video_name,
+      </if>
+      <if test="isFinished != null" >
+        is_finished,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="bak1 != null" >
+        bak_1,
+      </if>
+      <if test="bak2 != null" >
+        bak_2,
+      </if>
+      <if test="bak3 != null" >
+        bak_3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bonusId != null" >
+        #{bonusId,jdbcType=VARCHAR},
+      </if>
+      <if test="belongTo != null" >
+        #{belongTo,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constantDay != null" >
+        #{constantDay,jdbcType=INTEGER},
+      </if>
+      <if test="totleMoney != null" >
+        #{totleMoney,jdbcType=REAL},
+      </if>
+      <if test="totalNumber != null" >
+        #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="leftMoney != null" >
+        #{leftMoney,jdbcType=REAL},
+      </if>
+      <if test="leftNumber != null" >
+        #{leftNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pictureUrl != null" >
+        #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureName != null" >
+        #{pictureName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelUrl != null" >
+        #{modelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null" >
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoName != null" >
+        #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="isFinished != null" >
+        #{isFinished,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bak1 != null" >
+        #{bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        #{bak3,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vr.po.BonusExample" resultType="java.lang.Integer" >
+    select count(*) from bonus
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update bonus
+    <set >
+      <if test="record.bonusId != null" >
+        bonus_id = #{record.bonusId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.belongTo != null" >
+        belong_to = #{record.belongTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startTime != null" >
+        start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endTime != null" >
+        end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.constantDay != null" >
+        constant_day = #{record.constantDay,jdbcType=INTEGER},
+      </if>
+      <if test="record.totleMoney != null" >
+        totle_money = #{record.totleMoney,jdbcType=REAL},
+      </if>
+      <if test="record.totalNumber != null" >
+        total_number = #{record.totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.leftMoney != null" >
+        left_money = #{record.leftMoney,jdbcType=REAL},
+      </if>
+      <if test="record.leftNumber != null" >
+        left_number = #{record.leftNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.pictureUrl != null" >
+        picture_url = #{record.pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pictureName != null" >
+        picture_name = #{record.pictureName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelUrl != null" >
+        model_url = #{record.modelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelName != null" >
+        model_name = #{record.modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoUrl != null" >
+        video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.videoName != null" >
+        video_name = #{record.videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isFinished != null" >
+        is_finished = #{record.isFinished,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDelete != null" >
+        is_delete = #{record.isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.bak1 != null" >
+        bak_1 = #{record.bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bak2 != null" >
+        bak_2 = #{record.bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bak3 != null" >
+        bak_3 = #{record.bak3,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update bonus
+    set bonus_id = #{record.bonusId,jdbcType=VARCHAR},
+      belong_to = #{record.belongTo,jdbcType=VARCHAR},
+      start_time = #{record.startTime,jdbcType=TIMESTAMP},
+      end_time = #{record.endTime,jdbcType=TIMESTAMP},
+      constant_day = #{record.constantDay,jdbcType=INTEGER},
+      totle_money = #{record.totleMoney,jdbcType=REAL},
+      total_number = #{record.totalNumber,jdbcType=INTEGER},
+      left_money = #{record.leftMoney,jdbcType=REAL},
+      left_number = #{record.leftNumber,jdbcType=INTEGER},
+      picture_url = #{record.pictureUrl,jdbcType=VARCHAR},
+      picture_name = #{record.pictureName,jdbcType=VARCHAR},
+      model_url = #{record.modelUrl,jdbcType=VARCHAR},
+      model_name = #{record.modelName,jdbcType=VARCHAR},
+      video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      video_name = #{record.videoName,jdbcType=VARCHAR},
+      is_finished = #{record.isFinished,jdbcType=INTEGER},
+      is_delete = #{record.isDelete,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      bak_1 = #{record.bak1,jdbcType=VARCHAR},
+      bak_2 = #{record.bak2,jdbcType=VARCHAR},
+      bak_3 = #{record.bak3,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vr.po.Bonus" >
+    update bonus
+    <set >
+      <if test="belongTo != null" >
+        belong_to = #{belongTo,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="constantDay != null" >
+        constant_day = #{constantDay,jdbcType=INTEGER},
+      </if>
+      <if test="totleMoney != null" >
+        totle_money = #{totleMoney,jdbcType=REAL},
+      </if>
+      <if test="totalNumber != null" >
+        total_number = #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="leftMoney != null" >
+        left_money = #{leftMoney,jdbcType=REAL},
+      </if>
+      <if test="leftNumber != null" >
+        left_number = #{leftNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pictureUrl != null" >
+        picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureName != null" >
+        picture_name = #{pictureName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelUrl != null" >
+        model_url = #{modelUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null" >
+        model_name = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null" >
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="videoName != null" >
+        video_name = #{videoName,jdbcType=VARCHAR},
+      </if>
+      <if test="isFinished != null" >
+        is_finished = #{isFinished,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bak1 != null" >
+        bak_1 = #{bak1,jdbcType=VARCHAR},
+      </if>
+      <if test="bak2 != null" >
+        bak_2 = #{bak2,jdbcType=VARCHAR},
+      </if>
+      <if test="bak3 != null" >
+        bak_3 = #{bak3,jdbcType=INTEGER},
+      </if>
+    </set>
+    where bonus_id = #{bonusId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vr.po.Bonus" >
+    update bonus
+    set belong_to = #{belongTo,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      constant_day = #{constantDay,jdbcType=INTEGER},
+      totle_money = #{totleMoney,jdbcType=REAL},
+      total_number = #{totalNumber,jdbcType=INTEGER},
+      left_money = #{leftMoney,jdbcType=REAL},
+      left_number = #{leftNumber,jdbcType=INTEGER},
+      picture_url = #{pictureUrl,jdbcType=VARCHAR},
+      picture_name = #{pictureName,jdbcType=VARCHAR},
+      model_url = #{modelUrl,jdbcType=VARCHAR},
+      model_name = #{modelName,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      video_name = #{videoName,jdbcType=VARCHAR},
+      is_finished = #{isFinished,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      bak_1 = #{bak1,jdbcType=VARCHAR},
+      bak_2 = #{bak2,jdbcType=VARCHAR},
+      bak_3 = #{bak3,jdbcType=INTEGER}
+    where bonus_id = #{bonusId,jdbcType=VARCHAR}
+  </update>
+</mapper>
