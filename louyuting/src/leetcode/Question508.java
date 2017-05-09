@@ -12,14 +12,21 @@ public class Question508 {
 
     public static Map<Integer, Integer> map= new HashMap<>();
 
-    public static void func(TreeNode root){
+    public static Integer sum=0;
+
+    public static int func(TreeNode root){
 
         if(root == null)
-            return;;
+            return 0;;
 
-        func(root.left);
+        int left = func(root.left);
 
-        func(root.right);
+        int right = func(root.right);
+
+        sum = root.val + left + right;
+
+        map.put(sum, map.get(sum)!=null? map.get(sum)+1 : 1);
+        return sum;
     }
 
     public int[] findFrequentTreeSum(TreeNode root) {
@@ -32,9 +39,7 @@ public class Question508 {
             return res;
         }
 
-
-
-
+        func(root);
         return null;
     }
 }
