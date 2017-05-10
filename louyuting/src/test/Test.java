@@ -1,6 +1,11 @@
 package test;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,9 +37,13 @@ public class Test {
 
     }
 
-
+    public static class Fruit{
+    }
+    public static class Apple extends Fruit{
+    }
     public static void main(String[] args) {
-        Test tt  = new Test();
+        List<Fruit> list = new ArrayList<>();
+        list.add(new Apple());
     }
 
 
