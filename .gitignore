@@ -1,4 +1,5 @@
 louyuting/out/*
 louyuting/.idea/*
 
+*.class
 */workspace.xml
