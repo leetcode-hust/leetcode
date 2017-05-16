@@ -6,8 +6,10 @@ import java.util.List;
 /**
  * @author louyuting
  * @create 2017-05-13-上午10:40
+ *
+ * DFS 肯定是用栈或则是递归
  */
-public class Question301 {
+public class Question301_DFS {
 
     public List<String> removeInvalidParentheses(String s) {
         List<String> ans = new ArrayList<>();
@@ -33,7 +35,7 @@ public class Question301 {
     }
 
     public static void main(String[] args) {
-        List<String> ans = new Question301().removeInvalidParentheses("()())()");
+        List<String> ans = new Question301_DFS().removeInvalidParentheses("()())()");
 
         for (String str : ans){
             System.out.println(str);
