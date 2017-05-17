@@ -15,6 +15,8 @@ import leetcode.common.TreeNode;
  *      所以我们最好的就是使用层次遍历，然后如果不存在的节点就用null 表示。
  *
  *      节点之间用 逗号 来分割。
+ *
+ * 2017-5.17  serialize正常， 但是 deserialize 会出现数组越界问题，
  */
 public class Question297 {
     // Encodes a tree to a single string.
@@ -68,46 +70,56 @@ public class Question297 {
         //删除最后的一个逗号
         String[] nums = data.split(",");
         int maxLevel = Integer.valueOf(nums[nums.length-1]);//二叉树的层次数
-        TreeNode root = new TreeNode( Integer.valueOf(nums[0]) );//构建根节点。
 
+        TreeNode root = new TreeNode( Integer.valueOf(nums[0]) );//构建根节点。
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int level = 0;//层次遍历的层次；
-        int i=1; //从第二个节点开始；
         while (!queue.isEmpty()){
             level++;
             int size = (int)Math.pow(2.0d, level-1); //当前 level 的节点数
-            TreeNode node = queue.poll();
-
-            for(int i1=0; i1<size;){
+            int nextSize = size*2;//
+            for(int j=0; j<nextSize;){
+                TreeNode node = queue.poll();
                 if(node == null){
-                    i1++;i1++;
+                    //当前节点为 null, 说明其做左子树和右子树皆为空
+                    queue.add(null);
+                    queue.add(null);
+                    j++;
+                    j++;
                     continue;
                 }
                 else {
-                    if(!nums[ (int) Math.pow(2.0d, level-1)-1 + i1 ].equals("null"))
-                        node.left = new TreeNode(Integer.valueOf(nums[ (int) Math.pow(2.0d, level-1)-1 + i1 ]));
+                    if(!nums[ (int) Math.pow(2.0d, level)-1 + j ].equals("null"))
+                        node.left = new TreeNode(Integer.valueOf(nums[ (int) Math.pow(2.0d, level)-1 + j ]));
                     else
                         node.left=null;
-                    i1++;
-                    if(!nums[ (int) Math.pow(2.0d, level-1)-1 + i1 ].equals("null"))
-                        node.right = new TreeNode(Integer.valueOf(nums[ (int) Math.pow(2.0d, level-1)-1 + i1 ]));
+                    j++;
+                    if(!nums[ (int) Math.pow(2.0d, level)-1 + j ].equals("null"))
+                        node.right = new TreeNode(Integer.valueOf(nums[ (int) Math.pow(2.0d, level)-1 + j ]));
                     else
                         node.right=null;
-                    i1++;
-
+                    j++;
                     queue.add(node.left);
                     queue.add(node.right);
                 }
             }
+            if(level == maxLevel-1){
+                break;
+            }
         }
-
         return root;
     }
 
     public static void main(String[] args) {
         TreeNode root = new TreeNode(3);
         root.left = new TreeNode(6);
-        System.out.println(new Question297().serialize(root));
+        root.left.left = new TreeNode(9);
+
+        Question297 q = new Question297();
+        String res = q.serialize(root);
+        System.out.println(res);
+
+        TreeNode nn = q.deserialize(res);
     }
 }
