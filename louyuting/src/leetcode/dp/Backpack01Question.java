@@ -10,7 +10,7 @@ package leetcode.dp;
  *
  * 状态转移方程是：d(i, j)=max{ d(i-1, j), d(i-1,j-V[i-1]) + W[i-1] }
  */
-public class Knapsack {
+public class Backpack01Question {
     private static final int MAXN = 100;
     private static final int MAXC = 1000;
 
@@ -35,15 +35,13 @@ public class Knapsack {
                     d[i][j] = Math.max(d[i-1][j], d[i-1][j-v[i-1]] + w[i-1]);
                 }
             }
-
             System.out.println("从前{" + i +"}个宝石中取宝石的最大价值是："+ d[i][c]);
         }
-
         System.out.println("最大价值是："+ d[n][c]);
         return d[n][c];
     }
 
     public static void main(String[] args) {
-        Knapsack.getMaxValue(3, 10);
+        Backpack01Question.getMaxValue(3, 10);
     }
 }
