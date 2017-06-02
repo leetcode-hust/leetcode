@@ -1,6 +1,6 @@
-package zookeeper.lyt.config;
+package zookeeper.zookeeper.config;
 
-import com.zookeeper.lyt.ConnectionWatcher;
+import zookeeper.zookeeper.ConnectionWatcher;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;

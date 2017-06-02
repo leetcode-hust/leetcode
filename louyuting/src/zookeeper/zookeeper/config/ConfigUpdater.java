@@ -1,4 +1,4 @@
-package zookeeper.lyt.config;
+package zookeeper.zookeeper.config;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;

@@ -1,4 +1,4 @@
-package zookeeper.lyt;
+package zookeeper.zookeeper;
 
 import org.apache.zookeeper.*;
 
@@ -8,11 +8,11 @@ import java.util.concurrent.CountDownLatch;
  * Created by louyuting on 2017/3/18.
  * 在 Zookeeper 中新建组 : /zoo
  */
-public class CreateGroup implements Watcher{
+public class ConnectionWatcher implements Watcher{
 
     private static final int SESSION_TIMEOUT = 5000;
 
-    private ZooKeeper zk;
+    protected ZooKeeper zk;
     private CountDownLatch connectedSignal = new CountDownLatch(1);
 
     public void connect(String hosts) throws Exception{
@@ -48,16 +48,6 @@ public class CreateGroup implements Watcher{
     public void close() throws Exception{
         zk.close();
     }
-
-    // main
-    public static void main(String[] args) throws Exception {
-        CreateGroup createGroup = new CreateGroup();
-        createGroup.connect("123.206.13.151:2181");
-        createGroup.create("zoo");
-        createGroup.close();
-
-    }
-
 }
 
 
