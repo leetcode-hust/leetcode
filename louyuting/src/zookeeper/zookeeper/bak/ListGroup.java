@@ -1,4 +1,4 @@
-package zookeeper.zookeeper;
+package zookeeper.zookeeper.bak;
 
 import org.apache.zookeeper.KeeperException;
 
@@ -39,7 +39,7 @@ public class ListGroup extends ConnectionWatcher {
         ListGroup listGroup = new ListGroup();
 
         listGroup.connect("123.206.13.151:2181");
-        listGroup.list("motan/default_rpc/com.weibo.motan.demo.api.MotanDemoService");
+        listGroup.list("");
 
         listGroup.close();
     }

@@ -14,7 +14,7 @@ public class LogUtil {
 	public static final int INFO = 2;
 	public static final int DEBUG = 3;
 	
-	public static final int DEF = DEBUG;//默认
+	public static final int DEFAULT = DEBUG;//默认
 	
 	
 	/**
@@ -23,29 +23,29 @@ public class LogUtil {
 	 */
 	public static void log_debug2(String outStr){
 		int level = DEBUG;
-		if(level<= DEF)
-			System.out.println(DateUtil.fmtDateToSecond(new Date()) +"："+ outStr);
+		if(level<= DEFAULT)
+			System.out.println(DateUtil.fmtDateToMillisecond(new Date()) +"："+ outStr);
 	}
 	
 	public static void log_error(String outStr){
 		int level = ERROR;
-		if(level<= DEF)
-			System.out.println(DateUtil.fmtDateToSecond(new Date()) +"："+ outStr);
+		if(level<= DEFAULT)
+			System.out.println(DateUtil.fmtDateToMillisecond(new Date()) +"："+ outStr);
 	}
 	public static void log_warn(String outStr){
 		int level = WARN;
-		if(level<= DEF)
-			System.out.println(DateUtil.fmtDateToSecond(new Date()) +"："+ outStr);
+		if(level<= DEFAULT)
+			System.out.println(DateUtil.fmtDateToMillisecond(new Date()) +"："+ outStr);
 	}
 	public static void log_info(String outStr){
 		int level = INFO;
-		if(level<= DEF)
-			System.out.println(DateUtil.fmtDateToSecond(new Date()) +"："+ outStr);
+		if(level<= DEFAULT)
+			System.out.println(DateUtil.fmtDateToMillisecond(new Date()) +"："+ outStr);
 	}
 	public static void log_debug(String outStr){
 		int level = DEBUG;
-		if(level<= DEF)
-			System.out.println(DateUtil.fmtDateToSecond(new Date()) +"："+ outStr);
+		if(level<= DEFAULT)
+			System.out.println(DateUtil.fmtDateToMillisecond(new Date()) +"："+ outStr);
 	}
 	
 	/**
