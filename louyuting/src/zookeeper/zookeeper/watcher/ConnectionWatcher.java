@@ -30,7 +30,7 @@ public class ConnectionWatcher implements Watcher{
         }
         LogUtil.log_debug("当前event type 是：" + event.getType());
         if(event.getType() == Event.EventType.None){
-            LogUtil.log_debug("当前event 是连接事件。");
+            LogUtil.log_debug("当前event是连接事件。");
         }
     }
 }
